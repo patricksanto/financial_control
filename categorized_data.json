@@ -1,0 +1,1308 @@
+{
+  "Compras & Varejo": [
+    {
+      "date": "2026-02-02",
+      "amount": -18.99,
+      "name": "COOLBLUE BY BUCKAROO",
+      "description": "Coolblue abonnement factuurnummer CB02572372 incl 21 procent BTW",
+      "counterparty": "NL09DEUT0265258561"
+    },
+    {
+      "date": "2026-02-02",
+      "amount": -19.99,
+      "name": "COOLBLUE BY BUCKAROO",
+      "description": "Coolblue abonnement factuurnummer CB02571951 incl 21 procent BTW",
+      "counterparty": "NL09DEUT0265258561"
+    },
+    {
+      "date": "2026-02-03",
+      "amount": -3.95,
+      "name": "1444 Deventer",
+      "description": "1444 Deventer Deventer, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-12",
+      "amount": -19.5,
+      "name": "DONERIX DEVENTER",
+      "description": "DONERIX DEVENTER DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-17",
+      "amount": -29.99,
+      "name": "TOYCHAMP DEVENTER",
+      "description": "TOYCHAMP DEVENTER DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-18",
+      "amount": -5.93,
+      "name": "1444 Deventer",
+      "description": "1444 Deventer Deventer, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-19",
+      "amount": -20.26,
+      "name": "1444 Deventer",
+      "description": "1444 Deventer Deventer, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-21",
+      "amount": -18.0,
+      "name": "DONERIX DEVENTER",
+      "description": "DONERIX DEVENTER DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-22",
+      "amount": -10.79,
+      "name": "Action 1132",
+      "description": "Action 1132 Deventer, NL",
+      "counterparty": ""
+    }
+  ],
+  "Supermercado": [
+    {
+      "date": "2026-02-02",
+      "amount": -2.77,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-02",
+      "amount": -4.68,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-03",
+      "amount": -8.88,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-03",
+      "amount": -4.27,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-04",
+      "amount": -0.89,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-04",
+      "amount": -3.13,
+      "name": "Jumbo Deventer",
+      "description": "Jumbo Deventer DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-04",
+      "amount": -2.79,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-05",
+      "amount": -3.03,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-05",
+      "amount": -2.48,
+      "name": "Jumbo Deventer",
+      "description": "Jumbo Deventer DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-05",
+      "amount": -11.45,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-05",
+      "amount": -5.98,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-06",
+      "amount": -13.96,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-07",
+      "amount": -2.14,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-08",
+      "amount": -18.28,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-08",
+      "amount": -10.77,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-09",
+      "amount": -1.72,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-09",
+      "amount": -17.05,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-10",
+      "amount": -2.14,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-10",
+      "amount": -3.48,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-10",
+      "amount": -9.68,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-10",
+      "amount": -7.77,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-10",
+      "amount": -8.17,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-11",
+      "amount": -2.14,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-11",
+      "amount": -6.62,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-11",
+      "amount": -6.87,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-12",
+      "amount": -12.37,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-13",
+      "amount": -1.99,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-13",
+      "amount": -6.46,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-13",
+      "amount": -7.43,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-13",
+      "amount": -18.58,
+      "name": "Albert Heijn 1358",
+      "description": "Albert Heijn 1358 DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-13",
+      "amount": -0.89,
+      "name": "Albert Heijn 1358",
+      "description": "Albert Heijn 1358 DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-13",
+      "amount": -15.1,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-14",
+      "amount": -7.34,
+      "name": "DIRK VDBROEK FIL3365",
+      "description": "DIRK VDBROEK FIL3365 DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-14",
+      "amount": -28.99,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-15",
+      "amount": -9.07,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-15",
+      "amount": -14.07,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-16",
+      "amount": -9.95,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-16",
+      "amount": -36.99,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-17",
+      "amount": -6.48,
+      "name": "Albert Heijn 1358",
+      "description": "Albert Heijn 1358 DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-17",
+      "amount": -10.83,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-18",
+      "amount": -1.99,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-18",
+      "amount": -1.39,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-18",
+      "amount": -3.88,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-18",
+      "amount": -11.99,
+      "name": "Albert Heijn 1358",
+      "description": "Albert Heijn 1358 DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-18",
+      "amount": -9.68,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-19",
+      "amount": -1.9,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-19",
+      "amount": -13.66,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-19",
+      "amount": -8.99,
+      "name": "Jumbo Deventer",
+      "description": "Jumbo Deventer DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-19",
+      "amount": -1.78,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-19",
+      "amount": -0.89,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-19",
+      "amount": -3.78,
+      "name": "Albert Heijn 1358",
+      "description": "Albert Heijn 1358 DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-19",
+      "amount": -18.99,
+      "name": "Albert Heijn 1358",
+      "description": "Albert Heijn 1358 DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-19",
+      "amount": -32.28,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-19",
+      "amount": -7.1,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-20",
+      "amount": -7.89,
+      "name": "Jumbo Raadhuisplein",
+      "description": "Jumbo Raadhuisplein BODEGRAVEN, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-20",
+      "amount": -9.72,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-20",
+      "amount": -11.32,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-21",
+      "amount": -6.87,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-22",
+      "amount": -23.56,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-23",
+      "amount": -0.99,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-23",
+      "amount": -12.25,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-24",
+      "amount": -4.69,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-24",
+      "amount": -24.97,
+      "name": "Albert Heijn 1358",
+      "description": "Albert Heijn 1358 DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-25",
+      "amount": -3.99,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-25",
+      "amount": -8.07,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-25",
+      "amount": -4.89,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-26",
+      "amount": -10.51,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-26",
+      "amount": -2.4,
+      "name": "PLUS Beestenmarkt",
+      "description": "PLUS Beestenmarkt DEVENTER, NL",
+      "counterparty": ""
+    }
+  ],
+  "Taxas Bancárias": [
+    {
+      "date": "2026-02-02",
+      "amount": -18.99,
+      "name": "bunq BV",
+      "description": "nota fiscal 35649109",
+      "counterparty": "NL89BUNQ2025105584"
+    },
+    {
+      "date": "2026-02-23",
+      "amount": -3.99,
+      "name": "bunq BV",
+      "description": "invoice 36386997",
+      "counterparty": "NL89BUNQ2025105584"
+    }
+  ],
+  "Transporte": [
+    {
+      "date": "2026-02-02",
+      "amount": -2.32,
+      "name": "NLOVDRJZ8P69VGRJEY",
+      "description": "NLOVDRJZ8P69VGRJEY www.ovpay.nl, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-07",
+      "amount": -4.75,
+      "name": "5017 AT3 Den Bosch",
+      "description": "5017 AT3 Den Bosch 'S-HERTOGENBO, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-07",
+      "amount": -4.75,
+      "name": "5017 AT3 Den Bosch",
+      "description": "5017 AT3 Den Bosch 'S-HERTOGENBO, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-09",
+      "amount": -130.88,
+      "name": "NS GROEP IZ NS REIZIGERS",
+      "description": "Factuur: 433002977670",
+      "counterparty": "NL14ABNA0576850675"
+    },
+    {
+      "date": "2026-02-17",
+      "amount": -140.3,
+      "name": "NS GROEP IZ NS REIZIGERS",
+      "description": "Factuur: 430019509900",
+      "counterparty": "NL14ABNA0576850675"
+    },
+    {
+      "date": "2026-02-22",
+      "amount": -4.0,
+      "name": "5017 AT5 Den Bosch",
+      "description": "5017 AT5 Den Bosch 'S-HERTOGENBO, NL",
+      "counterparty": ""
+    }
+  ],
+  "Receitas/Transferências": [
+    {
+      "date": "2026-02-02",
+      "amount": 123.7,
+      "name": "Gustavo Keusen otero",
+      "description": "GUSTAVO KEUSEN OTERO",
+      "counterparty": "BE88967485279141"
+    },
+    {
+      "date": "2026-02-02",
+      "amount": 25.14,
+      "name": "Gustavo Keusen otero",
+      "description": "GUSTAVO KEUSEN OTERO",
+      "counterparty": "BE88967485279141"
+    },
+    {
+      "date": "2026-02-03",
+      "amount": 100.0,
+      "name": "Dev Patrick",
+      "description": "",
+      "counterparty": "NL45BUNQ2151760731"
+    },
+    {
+      "date": "2026-02-04",
+      "amount": 38.74,
+      "name": "Gustavo Keusen otero",
+      "description": "GUSTAVO KEUSEN OTERO",
+      "counterparty": "BE88967485279141"
+    },
+    {
+      "date": "2026-02-05",
+      "amount": 55.77,
+      "name": "Gustavo Keusen otero",
+      "description": "GUSTAVO KEUSEN OTERO",
+      "counterparty": "BE88967485279141"
+    },
+    {
+      "date": "2026-02-06",
+      "amount": 46.73,
+      "name": "Gustavo Keusen otero",
+      "description": "GUSTAVO KEUSEN OTERO",
+      "counterparty": "BE88967485279141"
+    },
+    {
+      "date": "2026-02-06",
+      "amount": 54.49,
+      "name": "Gustavo Keusen otero",
+      "description": "GUSTAVO KEUSEN OTERO",
+      "counterparty": "BE88967485279141"
+    },
+    {
+      "date": "2026-02-09",
+      "amount": 147.86,
+      "name": "Wise",
+      "description": "VITOR MANUEL ROCHA CERQUEIRA",
+      "counterparty": "BE48967056780227"
+    },
+    {
+      "date": "2026-02-10",
+      "amount": 31.01,
+      "name": "Gustavo Keusen otero",
+      "description": "GUSTAVO KEUSEN OTERO",
+      "counterparty": "BE88967485279141"
+    },
+    {
+      "date": "2026-02-11",
+      "amount": 3.56,
+      "name": "Gustavo Keusen otero",
+      "description": "GUSTAVO KEUSEN OTERO",
+      "counterparty": "BE88967485279141"
+    },
+    {
+      "date": "2026-02-11",
+      "amount": 66.62,
+      "name": "Gustavo Keusen otero",
+      "description": "GUSTAVO KEUSEN OTERO",
+      "counterparty": "BE88967485279141"
+    },
+    {
+      "date": "2026-02-11",
+      "amount": 1200.0,
+      "name": "Dev Patrick",
+      "description": "",
+      "counterparty": "NL45BUNQ2151760731"
+    },
+    {
+      "date": "2026-02-11",
+      "amount": 78.14,
+      "name": "Gustavo Keusen otero",
+      "description": "GUSTAVO KEUSEN OTERO",
+      "counterparty": "BE88967485279141"
+    },
+    {
+      "date": "2026-02-12",
+      "amount": 42.99,
+      "name": "Gustavo Keusen otero",
+      "description": "GUSTAVO KEUSEN OTERO",
+      "counterparty": "BE88967485279141"
+    },
+    {
+      "date": "2026-02-13",
+      "amount": 38.29,
+      "name": "Gustavo Keusen otero",
+      "description": "GUSTAVO KEUSEN OTERO",
+      "counterparty": "BE88967485279141"
+    },
+    {
+      "date": "2026-02-14",
+      "amount": 49.91,
+      "name": "Gustavo Keusen otero",
+      "description": "GUSTAVO KEUSEN OTERO",
+      "counterparty": "BE88967485279141"
+    },
+    {
+      "date": "2026-02-15",
+      "amount": 0.15,
+      "name": "bunq",
+      "description": "Congratulations, you won back your payment, simply by using your bunq Card!",
+      "counterparty": "NL14BUNQ2183374462"
+    },
+    {
+      "date": "2026-02-15",
+      "amount": 0.09,
+      "name": "bunq",
+      "description": "Congratulations, you won back your payment, simply by using your bunq Card!",
+      "counterparty": "NL14BUNQ2183374462"
+    },
+    {
+      "date": "2026-02-18",
+      "amount": 54.37,
+      "name": "Gustavo Keusen otero",
+      "description": "GUSTAVO KEUSEN OTERO",
+      "counterparty": "BE88967485279141"
+    },
+    {
+      "date": "2026-02-19",
+      "amount": 43.69,
+      "name": "Gustavo Keusen otero",
+      "description": "GUSTAVO KEUSEN OTERO",
+      "counterparty": "BE88967485279141"
+    },
+    {
+      "date": "2026-02-23",
+      "amount": 233.17,
+      "name": "Gustavo Keusen otero",
+      "description": "GUSTAVO KEUSEN OTERO",
+      "counterparty": "BE88967485279141"
+    },
+    {
+      "date": "2026-02-23",
+      "amount": 78.82,
+      "name": "Gustavo Keusen otero",
+      "description": "GUSTAVO KEUSEN OTERO",
+      "counterparty": "BE88967485279141"
+    },
+    {
+      "date": "2026-02-24",
+      "amount": 175.6,
+      "name": "Gustavo Keusen otero",
+      "description": "GUSTAVO KEUSEN OTERO",
+      "counterparty": "BE88967485279141"
+    },
+    {
+      "date": "2026-02-24",
+      "amount": 418.75,
+      "name": "Gustavo Keusen otero",
+      "description": "GUSTAVO KEUSEN OTERO",
+      "counterparty": "BE88967485279141"
+    },
+    {
+      "date": "2026-02-24",
+      "amount": 88.64,
+      "name": "Gustavo Keusen otero",
+      "description": "GUSTAVO KEUSEN OTERO",
+      "counterparty": "BE88967485279141"
+    },
+    {
+      "date": "2026-02-25",
+      "amount": 126.45,
+      "name": "Gustavo Keusen otero",
+      "description": "GUSTAVO KEUSEN OTERO",
+      "counterparty": "BE88967485279141"
+    },
+    {
+      "date": "2026-02-25",
+      "amount": 143.63,
+      "name": "Gustavo Keusen otero",
+      "description": "GUSTAVO KEUSEN OTERO",
+      "counterparty": "BE88967485279141"
+    },
+    {
+      "date": "2026-02-25",
+      "amount": 158.04,
+      "name": "Gustavo Keusen otero",
+      "description": "GUSTAVO KEUSEN OTERO",
+      "counterparty": "BE88967485279141"
+    },
+    {
+      "date": "2026-02-25",
+      "amount": 68.09,
+      "name": "Gustavo Keusen otero",
+      "description": "GUSTAVO KEUSEN OTERO",
+      "counterparty": "BE88967485279141"
+    },
+    {
+      "date": "2026-02-25",
+      "amount": 136.34,
+      "name": "Gustavo Keusen otero",
+      "description": "GUSTAVO KEUSEN OTERO",
+      "counterparty": "BE88967485279141"
+    },
+    {
+      "date": "2026-02-25",
+      "amount": 36.5,
+      "name": "Gustavo Keusen otero",
+      "description": "GUSTAVO KEUSEN OTERO",
+      "counterparty": "BE88967485279141"
+    },
+    {
+      "date": "2026-02-26",
+      "amount": 103.04,
+      "name": "Gustavo Keusen otero",
+      "description": "GUSTAVO KEUSEN OTERO",
+      "counterparty": "BE88967485279141"
+    },
+    {
+      "date": "2026-02-26",
+      "amount": 144.12,
+      "name": "Gustavo Keusen otero",
+      "description": "GUSTAVO KEUSEN OTERO",
+      "counterparty": "BE88967485279141"
+    },
+    {
+      "date": "2026-02-26",
+      "amount": 56.94,
+      "name": "Gustavo Keusen otero",
+      "description": "GUSTAVO KEUSEN OTERO",
+      "counterparty": "BE88967485279141"
+    },
+    {
+      "date": "2026-02-26",
+      "amount": 39.5,
+      "name": "Gustavo Keusen otero",
+      "description": "GUSTAVO KEUSEN OTERO",
+      "counterparty": "BE88967485279141"
+    },
+    {
+      "date": "2026-02-26",
+      "amount": 158.4,
+      "name": "Gustavo Keusen otero",
+      "description": "GUSTAVO KEUSEN OTERO",
+      "counterparty": "BE88967485279141"
+    },
+    {
+      "date": "2026-02-26",
+      "amount": 139.9,
+      "name": "Patrick Silva Gomes dos Santos",
+      "description": "PATRICK SILVA GOMES DOS SANTOS",
+      "counterparty": "BE13967340273639"
+    }
+  ],
+  "Planos de Saúde": [
+    {
+      "date": "2026-02-02",
+      "amount": -178.3,
+      "name": "HollandZorg",
+      "description": "HollandZorg. Zorgverzekering(en) Z1, HZV. Polis 7572441. Februari 2026 t/m februari 2026",
+      "counterparty": "NL89INGB0672544814"
+    },
+    {
+      "date": "2026-02-26",
+      "amount": -385.0,
+      "name": "HollandZorg",
+      "description": "HollandZorg. Uw eigen bijdrage voor declaratie(s): 41543692.",
+      "counterparty": "NL89INGB0672544814"
+    }
+  ],
+  "Empresa Gustavo Otero": [
+    {
+      "date": "2026-02-02",
+      "amount": -12.22,
+      "name": "ZOOM.COM 888-799-9666",
+      "description": "ZOOM.COM 888-799-9666 SAN JOSE, US 14.44 USD, 1 USD = 0.84626 EUR",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-14",
+      "amount": -9.99,
+      "name": "APPLE.COM/BILL",
+      "description": "APPLE.COM/BILL CORK, IE",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-17",
+      "amount": -18.5,
+      "name": "FACEBK *692L8DZ272",
+      "description": "FACEBK *692L8DZ272 SAO PAULO, BR 113.94 BRL, 1 BRL = 0.16237 EUR",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-18",
+      "amount": -31.99,
+      "name": "APPLE.COM/BILL",
+      "description": "APPLE.COM/BILL CORK, IE",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-19",
+      "amount": -18.69,
+      "name": "FACEBK *UGXK6DD372",
+      "description": "FACEBK *UGXK6DD372 SAO PAULO, BR 114.04 BRL, 1 BRL = 0.16389 EUR",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-23",
+      "amount": -19.95,
+      "name": "APPLE.COM/BILL",
+      "description": "APPLE.COM/BILL CORK, IE",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-25",
+      "amount": -29.99,
+      "name": "APPLE.COM/BILL",
+      "description": "APPLE.COM/BILL CORK, IE",
+      "counterparty": ""
+    }
+  ],
+  "Farmácia & Saúde": [
+    {
+      "date": "2026-02-03",
+      "amount": -11.99,
+      "name": "Kruidvat 7614",
+      "description": "Kruidvat 7614 DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-14",
+      "amount": -3.09,
+      "name": "Kruidvat 2208",
+      "description": "Kruidvat 2208 DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-18",
+      "amount": -6.74,
+      "name": "Holland & Barrett",
+      "description": "Holland & Barrett DEVENTER, NL",
+      "counterparty": ""
+    }
+  ],
+  "Academia": [
+    {
+      "date": "2026-02-03",
+      "amount": -39.99,
+      "name": "Sportcity",
+      "description": "SportCity membership 01-02-2026 - 28-02-2026 Gustavo Otero",
+      "counterparty": "NL54RABO0334583608"
+    },
+    {
+      "date": "2026-02-17",
+      "amount": -36.99,
+      "name": "Sportcity",
+      "description": "SportCity membership 17-02-2026 - 16-03-2026 Patrick Silva Gomes Dos Santos",
+      "counterparty": "NL54RABO0334583608"
+    }
+  ],
+  "Assinaturas & Serviços Digitais": [
+    {
+      "date": "2026-02-03",
+      "amount": -8.2,
+      "name": "DL*GOOGLE Google",
+      "description": "DL*GOOGLE Google SAO PAULO, BR 49.99 BRL, 1 BRL = 0.16403 EUR",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-04",
+      "amount": -2.46,
+      "name": "DL*GOOGLE Google",
+      "description": "DL*GOOGLE Google SAO PAULO, BR 14.99 BRL, 1 BRL = 0.16411 EUR",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-11",
+      "amount": -17.99,
+      "name": "Spotify AB",
+      "description": "QB54GPCJN7SHFTX32K8A1 7180405067423766 P3F3E6A4F1",
+      "counterparty": "NL04ADYB2017400157"
+    },
+    {
+      "date": "2026-02-11",
+      "amount": -23.0,
+      "name": "OPENAI *CHATGPT SUBSCR",
+      "description": "OPENAI *CHATGPT SUBSCR DUBLIN, IE",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-12",
+      "amount": -4.25,
+      "name": "RAILWAY",
+      "description": "RAILWAY SAN FRANCISCO, US 5.00 USD, 1 USD = 0.85000 EUR",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-12",
+      "amount": -5.75,
+      "name": "Canva* 04790-34247728",
+      "description": "Canva* 04790-34247728 Sydney, AU 35.00 BRL, 1 BRL = 0.16429 EUR",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-13",
+      "amount": -9.99,
+      "name": "SINGA PREMIUM",
+      "description": "SINGA PREMIUM HELSINKI, FI",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-16",
+      "amount": -8.99,
+      "name": "GOOGLE *YouTubePremium",
+      "description": "GOOGLE *YouTubePremium LONDON, GB",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-17",
+      "amount": -1.95,
+      "name": "Microsoft*Microsoft 36",
+      "description": "Microsoft*Microsoft 36 Sao Paulo, BR 12.00 BRL, 1 BRL = 0.16250 EUR",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-18",
+      "amount": -6.99,
+      "name": "OTT* WOW PRESENTS PLUS",
+      "description": "OTT* WOW PRESENTS PLUS LOS ANGELES, US",
+      "counterparty": ""
+    }
+  ],
+  "Coffeeshop": [
+    {
+      "date": "2026-02-04",
+      "amount": -12.0,
+      "name": "Coffeeshop Dr Pleasure",
+      "description": "Coffeeshop Dr Pleasure Deventer, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-07",
+      "amount": -12.0,
+      "name": "COFFEESHOP DR. PLEASUR",
+      "description": "COFFEESHOP DR. PLEASUR DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-13",
+      "amount": -12.0,
+      "name": "Coffeeshop Dr Pleasure",
+      "description": "Coffeeshop Dr Pleasure Deventer, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-15",
+      "amount": -9.0,
+      "name": "Coffeeshop Dr Pleasure",
+      "description": "Coffeeshop Dr Pleasure Deventer, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-19",
+      "amount": -12.0,
+      "name": "COFFEESHOP DR. PLEASUR",
+      "description": "COFFEESHOP DR. PLEASUR DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-23",
+      "amount": -12.0,
+      "name": "COFFEESHOP DR. PLEASUR",
+      "description": "COFFEESHOP DR. PLEASUR DEVENTER, NL",
+      "counterparty": ""
+    }
+  ],
+  "Restaurantes & Delivery": [
+    {
+      "date": "2026-02-04",
+      "amount": -17.49,
+      "name": "Dominos",
+      "description": "V2SJVP79RSB2K8F3JG0S 7180774179954196 d5c1f4e2-8f44-4d81-b7a0-58e9a5bff32",
+      "counterparty": "NL04ADYB2017400157"
+    },
+    {
+      "date": "2026-02-07",
+      "amount": -9.1,
+      "name": "CCV*DAVO PROEFLOKAAL D",
+      "description": "CCV*DAVO PROEFLOKAAL D DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-07",
+      "amount": -8.9,
+      "name": "CCV*DAVO PROEFLOKAAL D",
+      "description": "CCV*DAVO PROEFLOKAAL D DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-07",
+      "amount": -17.49,
+      "name": "Dominos",
+      "description": "ZTP829Q8HZ66LFG6JG0S 7180956873704209 fc6b0be9-72ab-4d87-b12a-7ce2925e8c4",
+      "counterparty": "NL04ADYB2017400157"
+    },
+    {
+      "date": "2026-02-15",
+      "amount": -16.99,
+      "name": "Dominos",
+      "description": "VXG6B7TRWL4JPRG6JG0S 7180704773591664 0ab1b767-3986-4de4-855f-5cc5f04d157",
+      "counterparty": "NL04ADYB2017400157"
+    },
+    {
+      "date": "2026-02-18",
+      "amount": -33.0,
+      "name": "CCV*Banketbakkerij Len",
+      "description": "CCV*Banketbakkerij Len DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-21",
+      "amount": -26.0,
+      "name": "Stichting MIMIK",
+      "description": "3298134036X9f836 7370286852393592 Bestelling 31524794",
+      "counterparty": "NL35RABO0117713678"
+    },
+    {
+      "date": "2026-02-21",
+      "amount": -6.95,
+      "name": "MIMIK eten & drinken",
+      "description": "MIMIK eten & drinken DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-23",
+      "amount": -7.5,
+      "name": "PAY.nl*Broodbode Deven",
+      "description": "PAY.nl*Broodbode Deven DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-23",
+      "amount": -7.0,
+      "name": "CCV*K&B Venlo",
+      "description": "CCV*K&B Venlo DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-26",
+      "amount": -7.5,
+      "name": "PAY.nl*Broodbode Deven",
+      "description": "PAY.nl*Broodbode Deven DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-26",
+      "amount": -24.48,
+      "name": "Dominos",
+      "description": "QPP82WJWBR2J83X3JG0S 7180426255168199 e0411fb3-ea00-4ca5-8449-03047d56156",
+      "counterparty": "NL04ADYB2017400157"
+    }
+  ],
+  "Lazer & Entretenimento": [
+    {
+      "date": "2026-02-05",
+      "amount": -6.9,
+      "name": "Midtown Blues Rock-C",
+      "description": "Midtown Blues Rock-C DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-12",
+      "amount": -10.0,
+      "name": "SumUp  *Studieverenigi",
+      "description": "SumUp  *Studieverenigi Deventer, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-12",
+      "amount": -6.9,
+      "name": "Midtown Blues Rock-C",
+      "description": "Midtown Blues Rock-C DEVENTER, NL",
+      "counterparty": ""
+    }
+  ],
+  "Educação": [
+    {
+      "date": "2026-02-06",
+      "amount": -4.15,
+      "name": "Saxion 1814",
+      "description": "Saxion 1814 DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-25",
+      "amount": -625.0,
+      "name": "P Silva Gomes Dos CJ",
+      "description": "",
+      "counterparty": "NL08ABNA0142002305"
+    }
+  ],
+  "Outros": [
+    {
+      "date": "2026-02-06",
+      "amount": -39.0,
+      "name": "XP*T BOOKEO24.COM",
+      "description": "XP*T BOOKEO24.COM DUBLIN, IE",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-07",
+      "amount": -2.75,
+      "name": "BCK*AH to go 5801",
+      "description": "BCK*AH to go 5801 S-HERTOGENBOS, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-07",
+      "amount": -1.9,
+      "name": "BCK*AH Station Den Bos",
+      "description": "BCK*AH Station Den Bos S-HERTOGENBOS, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-07",
+      "amount": -2.3,
+      "name": "BCK*AH to go 5801",
+      "description": "BCK*AH to go 5801 S-HERTOGENBOS, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-20",
+      "amount": -3.05,
+      "name": "BCK*0707 DV Huiskamer",
+      "description": "BCK*0707 DV Huiskamer DEVENTER, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-20",
+      "amount": -2.3,
+      "name": "BCK*AH to go 5873 Utre",
+      "description": "BCK*AH to go 5873 Utre UTRECHT, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-22",
+      "amount": -1.3,
+      "name": "BCK*AH to go 5801",
+      "description": "BCK*AH to go 5801 S-HERTOGENBOS, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-22",
+      "amount": -2.3,
+      "name": "BCK*AH to go 5801",
+      "description": "BCK*AH to go 5801 S-HERTOGENBOS, NL",
+      "counterparty": ""
+    }
+  ],
+  "Moradia": [
+    {
+      "date": "2026-02-11",
+      "amount": -54.23,
+      "name": "KPN B.V.",
+      "description": "Factuur 08-02-2026, klantnummer 9110137639, kpn.com/thuisfactuur.",
+      "counterparty": "NL41INGB0000467598"
+    },
+    {
+      "date": "2026-02-11",
+      "amount": -66.0,
+      "name": "KPN - Mobiel",
+      "description": "Factuur 03-02-2026, klantnummer 40109735267, kpn.com/mobielefactuur.",
+      "counterparty": "NL83INGB0000325513"
+    },
+    {
+      "date": "2026-02-11",
+      "amount": -60.26,
+      "name": "KPN - Mobiel",
+      "description": "Factuur 03-02-2026, klantnummer 40109589184, kpn.com/mobielefactuur.",
+      "counterparty": "NL83INGB0000325513"
+    },
+    {
+      "date": "2026-02-26",
+      "amount": -1310.0,
+      "name": "DERDENGELDEN HUNWONEN",
+      "description": "BETALINGSKENMERK: 7001001002880016 Huurincasso maart  Periode maart 2026 Molenbelt 29",
+      "counterparty": "NL74ABNA0554489058"
+    },
+    {
+      "date": "2026-02-26",
+      "amount": -21.0,
+      "name": "VITENS NV",
+      "description": "Factuurnr 131601726932, Klantnr 1012734774 BTW 1,73, 7413 XE 29,, Termijnfactuur FEB",
+      "counterparty": "NL94INGB0000869000"
+    }
+  ]
+}
