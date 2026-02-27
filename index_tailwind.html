@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="h-full bg-gray-50">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle Financeiro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#10b981',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="h-full">
+    <div class="min-h-full">
+        <!-- Header -->
+        <div class="bg-gradient-to-r from-emerald-600 to-teal-600 pb-32">
+            <nav class="border-b border-emerald-300 border-opacity-25">
+                <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                    <div class="flex h-16 items-center justify-between">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0">
+                                <h1 class="text-2xl font-bold text-white">💰 Controle Financeiro</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <header class="py-10">
+                <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                    <h2 class="text-3xl font-bold tracking-tight text-white">Dashboard Financeiro</h2>
+                    <p class="mt-2 text-sm text-emerald-100">Acompanhe suas receitas, despesas e orçamento mensal</p>
+                </div>
+            </header>
+        </div>
+
+        <main class="-mt-32">
+            <div class="mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8">
+                <!-- Month Selector -->
+                <div class="mb-8 rounded-lg bg-white px-5 py-6 shadow sm:px-6">
+                    <div class="flex flex-wrap items-center gap-3">
+                        <label class="text-sm font-semibold text-gray-700">Período:</label>
+                        <div id="monthButtons" class="flex flex-wrap gap-2"></div>
+                    </div>
+                </div>
+
+                <!-- Content -->
+                <div id="content">
+                    <div class="text-center py-12">
+                        <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                        <h3 class="mt-2 text-sm font-semibold text-gray-900">Selecione um mês</h3>
+                        <p class="mt-1 text-sm text-gray-500">Escolha um período acima para visualizar os dados</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const budget = {
+            "monthly_budget": {
+                "Moradia": 1641.49,
+                "Planos de Saúde": 331.30,
+                "Supermercado": 600.00,
+                "Transporte": 100.00,
+                "Educação": 595.00,
+                "Empresa Gustavo Otero": 140.00,
+                "Assinaturas & Serviços Digitais": 89.00,
+                "Restaurantes & Delivery": 180.00,
+                "Coffeeshop": 80.00,
+                "Farmácia & Saúde": 50.00,
+                "Academia": 77.00,
+                "Compras & Varejo": 150.00,
+                "Lazer & Entretenimento": 60.00,
+                "Taxas Bancárias": 22.00
+            },
+            "total_monthly_budget": 4115.79
+        };
+
+        const monthlyAnalysis = {
+            "2026-01": {
+                "narrative": "🚨 <strong>Eita!</strong> Janeiro começou o ano com tudo... e estourou <strong>€1.940,85</strong> do orçamento (quase 50% a mais!). Vamos aos culpados:|🔥 <strong>Transporte</strong> foi o campeão absoluto: €100 planejados viraram €384 (+€284, ou seja, quase 4x!). 🛍️ <strong>Compras & Varejo</strong> também não ajudou: €150 viraram €430 (+€280). 🛒 E o <strong>Supermercado</strong> passou de €600 para €756 (+€156).|💡 Esses três sozinhos explicam €720 do estouro. Janeiro é sempre complicado com volta das férias, mas esses números precisam de atenção! 🎯 Foco: controlar transporte e compras no próximo mês."
+            },
+            "2026-02": {
+                "narrative": "🚨 <strong>Opa!</strong> O orçamento estourou em <strong>€300,38</strong> este mês. Vamos ver quem foram os vilões:|🔥 <strong>Planos de Saúde</strong> foi o grande campeão: era pra ser €331, mas foram €563 (+€232, ou +70%!). ⚠️ <strong>Transporte</strong> também pesou: €100 planejados viraram €287 (+€187, quase 3x o esperado!).|💡 Esses dois sozinhos já explicam €419 do estouro. <strong>Educação</strong> (+€34) e <strong>Supermercado</strong> (+€11) também saíram um pouco da curva, mas nada grave. 🎯 Foco para março: controlar saúde e transporte!"
+            }
+        };
+
+        const months = {"2026-01":{"label":"Janeiro 2026","data":{"Transporte":[{"date":"2026-01-01","amount":-30.72,"name":"NS Reizigers B.V.","description":"E536693687 8030146589864678 NS e-Tickets, Order: E536693687","counterparty":"NL56DEUT0265186420"},{"date":"2026-01-03","amount":-22.94,"name":"Uber","description":"GP6X4J9JP5BLLFR92G404 7180475101830862 Uber","counterparty":"NL04ADYB2017400157"},{"date":"2026-01-03","amount":-39.0,"name":"Uber","description":"R2L9KNCDBTHXZFH62G404 7180095698739149 Uber","counterparty":"NL04ADYB2017400157"},{"date":"2026-01-08","amount":-3.6,"name":"NS Reizigers B.V.","description":"E536914436 8030205983604353 NS e-Tickets, Order: E536914436","counterparty":"NL56DEUT0265186420"},{"date":"2026-01-08","amount":-3.6,"name":"NS Reizigers B.V.","description":"E536919625 8030706589754221 NS e-Tickets, Order: E536919625","counterparty":"NL56DEUT0265186420"},{"date":"2026-01-09","amount":-29.64,"name":"NS Reizigers B.V.","description":"E536930803 8030615407751872 NS e-Tickets, Order: E536930803","counterparty":"NL56DEUT0265186420"},{"date":"2026-01-12","amount":-118.97,"name":"NS GROEP IZ NS REIZIGERS","description":"Factuur: 453002947577","counterparty":"NL14ABNA0576850675"},{"date":"2026-01-12","amount":-130.89,"name":"NS GROEP IZ NS REIZIGERS","description":"Factuur: 421002988201","counterparty":"NL14ABNA0576850675"},{"date":"2026-01-20","amount":-2.32,"name":"NLOV6D5EVAZ9BA6J4L","description":"NLOV6D5EVAZ9BA6J4L www.ovpay.nl, NL","counterparty":""},{"date":"2026-01-20","amount":-2.32,"name":"NLOVP457BM78VWNJE6","description":"NLOVP457BM78VWNJE6 www.ovpay.nl, NL","counterparty":""}],"Supermercado":[{"date":"2026-01-01","amount":-2.7,"name":"BCK*5801 HT AH to go","description":"BCK*5801 HT AH to go S-HERTOGENBOS, NL","counterparty":""},{"date":"2026-01-01","amount":-2.7,"name":"BCK*5801 HT AH to go","description":"BCK*5801 HT AH to go S-HERTOGENBOS, NL","counterparty":""},{"date":"2026-01-01","amount":-3.95,"name":"BCK*AH to go 5801","description":"BCK*AH to go 5801 S-HERTOGENBOS, NL","counterparty":""},{"date":"2026-01-01","amount":-3.43,"name":"Plus Vosselman","description":"Plus Vosselman DEVENTER, NL","counterparty":""},{"date":"2026-01-01","amount":-23.11,"name":"Jumbo Deventer","description":"Jumbo Deventer DEVENTER, NL","counterparty":""},{"date":"2026-01-02","amount":-57.84,"name":"Plus Vosselman","description":"Plus Vosselman DEVENTER, NL","counterparty":""},{"date":"2026-01-06","amount":-3.82,"name":"Plus Vosselman","description":"Plus Vosselman DEVENTER, NL","counterparty":""},{"date":"2026-01-06","amount":-2.7,"name":"BCK*5824 DV AH to Go","description":"BCK*5824 DV AH to Go DEVENTER, NL","counterparty":""},{"date":"2026-01-07","amount":-3.14,"name":"Plus Vosselman","description":"Plus Vosselman DEVENTER, NL","counterparty":""},{"date":"2026-01-07","amount":-3.91,"name":"Jumbo Deventer","description":"Jumbo Deventer DEVENTER, NL","counterparty":""},{"date":"2026-01-07","amount":-17.44,"name":"Plus Vosselman","description":"Plus Vosselman DEVENTER, NL","counterparty":""},{"date":"2026-01-08","amount":-1.99,"name":"Plus Vosselman","description":"Plus Vosselman DEVENTER, NL","counterparty":""},{"date":"2026-01-08","amount":-6.85,"name":"BCK*AH to go Devent 58","description":"BCK*AH to go Devent 58 DEVENTER, NL","counterparty":""},{"date":"2026-01-08","amount":-58.31,"name":"Plus Vosselman","description":"Plus Vosselman DEVENTER, NL","counterparty":""},{"date":"2026-01-09","amount":-2.29,"name":"Plus Vosselman","description":"Plus Vosselman DEVENTER, NL","counterparty":""},{"date":"2026-01-09","amount":-17.02,"name":"Plus Vosselman","description":"Plus Vosselman DEVENTER, NL","counterparty":""},{"date":"2026-01-10","amount":-40.58,"name":"DIRK VDBROEK FIL3365","description":"DIRK VDBROEK FIL3365 DEVENTER, NL","counterparty":""},{"date":"2026-01-11","amount":-14.52,"name":"Plus Vosselman","description":"Plus Vosselman DEVENTER, NL","counterparty":""},{"date":"2026-01-12","amount":-20.71,"name":"Plus Vosselman","description":"Plus Vosselman DEVENTER, NL","counterparty":""},{"date":"2026-01-12","amount":-4.59,"name":"Jumbo Deventer","description":"Jumbo Deventer DEVENTER, NL","counterparty":""},{"date":"2026-01-14","amount":-3.14,"name":"Plus Vosselman","description":"Plus Vosselman DEVENTER, NL","counterparty":""},{"date":"2026-01-14","amount":-9.45,"name":"Albert Heijn 1358","description":"Albert Heijn 1358 DEVENTER, NL","counterparty":""},{"date":"2026-01-14","amount":-11.38,"name":"Plus Vosselman","description":"Plus Vosselman DEVENTER, NL","counterparty":""},{"date":"2026-01-14","amount":-17.01,"name":"Plus Vosselman","description":"Plus Vosselman DEVENTER, NL","counterparty":""},{"date":"2026-01-16","amount":-2.64,"name":"Jumbo Deventer","description":"Jumbo Deventer DEVENTER, NL","counterparty":""},{"date":"2026-01-16","amount":-16.33,"name":"Plus Vosselman","description":"Plus Vosselman DEVENTER, NL","counterparty":""},{"date":"2026-01-16","amount":-0.99,"name":"Plus Vosselman","description":"Plus Vosselman DEVENTER, NL","counterparty":""},{"date":"2026-01-17","amount":-10.58,"name":"Plus Vosselman","description":"Plus Vosselman DEVENTER, NL","counterparty":""},{"date":"2026-01-18","amount":-4.0,"name":"Plus Vosselman","description":"Plus Vosselman DEVENTER, NL","counterparty":""},{"date":"2026-01-18","amount":-6.99,"name":"OTT* WOW PRESENTS PLUS","description":"OTT* WOW PRESENTS PLUS LOS ANGELES, US","counterparty":""},{"date":"2026-01-19","amount":-7.48,"name":"Plus Vosselman","description":"Plus Vosselman DEVENTER, NL","counterparty":""},{"date":"2026-01-19","amount":-35.4,"name":"Plus Vosselman","description":"Plus Vosselman DEVENTER, NL","counterparty":""},{"date":"2026-01-20","amount":-13.83,"name":"Plus Vosselman","description":"Plus Vosselman DEVENTER, NL","counterparty":""},{"date":"2026-01-21","amount":-17.28,"name":"Plus Vosselman","description":"Plus Vosselman DEVENTER, NL","counterparty":""},{"date":"2026-01-22","amount":-28.04,"name":"Plus Vosselman","description":"Plus Vosselman DEVENTER, NL","counterparty":""},{"date":"2026-01-22","amount":-6.47,"name":"Plus Vosselman","description":"Plus Vosselman DEVENTER, NL","counterparty":""},{"date":"2026-01-23","amount":-20.95,"name":"Plus Vosselman","description":"Plus Vosselman DEVENTER, NL","counterparty":""},{"date":"2026-01-23","amount":-6.18,"name":"Plus Vosselman","description":"Plus Vosselman DEVENTER, NL","counterparty":""},{"date":"2026-01-24","amount":-10.72,"name":"Plus Vosselman","description":"Plus Vosselman DEVENTER, NL","counterparty":""},{"date":"2026-01-24","amount":-12.16,"name":"Plus Vosselman","description":"Plus Vosselman DEVENTER, NL","counterparty":""},{"date":"2026-01-25","amount":-19.29,"name":"Plus Vosselman","description":"Plus Vosselman DEVENTER, NL","counterparty":""},{"date":"2026-01-25","amount":-21.9,"name":"Plus Vosselman","description":"Plus Vosselman DEVENTER, NL","counterparty":""},{"date":"2026-01-25","amount":-2.02,"name":"Plus Vosselman","description":"Plus Vosselman DEVENTER, NL","counterparty":""},{"date":"2026-01-26","amount":-6.1,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-01-26","amount":-9.71,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-01-27","amount":-3.49,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-01-27","amount":-7.9,"name":"BCK*AH to go 5873 Utre","description":"BCK*AH to go 5873 Utre UTRECHT, NL","counterparty":""},{"date":"2026-01-27","amount":-2.75,"name":"BCK*AH to go Utrecht 5","description":"BCK*AH to go Utrecht 5 UTRECHT, NL","counterparty":""},{"date":"2026-01-28","amount":-6.22,"name":"Albert Heijn 1358","description":"Albert Heijn 1358 DEVENTER, NL","counterparty":""},{"date":"2026-01-28","amount":-16.5,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-01-28","amount":-9.13,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-01-29","amount":-2.78,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-01-29","amount":-1.37,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-01-30","amount":-24.85,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-01-30","amount":-3.43,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-01-30","amount":-6.23,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-01-31","amount":-16.15,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-01-31","amount":-16.99,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-01","amount":-11.36,"name":"Albert Heijn 1358","description":"Albert Heijn 1358 DEVENTER, NL","counterparty":""},{"date":"2026-02-01","amount":-35.58,"name":"DIRK VDBROEK FIL3365","description":"DIRK VDBROEK FIL3365 DEVENTER, NL","counterparty":""}],"Compras & Varejo":[{"date":"2026-01-01","amount":-149.9,"name":"bol.com","description":"P1636276029 7051136301685638 bol.com A000DFT6LR","counterparty":"NL27INGB0000026500"},{"date":"2026-01-02","amount":-69.2,"name":"Visdirect","description":"Visdirect BUNSCHOTEN-SP, NL","counterparty":""},{"date":"2026-01-02","amount":-15.95,"name":"Nijka Kaas","description":"Nijka Kaas RIJSSEN, NL","counterparty":""},{"date":"2026-01-02","amount":-12.46,"name":"Bruna Deventer Centr","description":"Bruna Deventer Centr DEVENTER, NL","counterparty":""},{"date":"2026-01-02","amount":-61.0,"name":"SUMME DEVENTER","description":"SUMME DEVENTER DEVENTER, NL","counterparty":""},{"date":"2026-01-02","amount":-24.15,"name":"WereldwinkelDeventer","description":"WereldwinkelDeventer DEVENTER, NL","counterparty":""},{"date":"2026-01-02","amount":-4.95,"name":"WereldwinkelDeventer","description":"WereldwinkelDeventer DEVENTER, NL","counterparty":""},{"date":"2026-01-02","amount":-24.98,"name":"DECATHLON Deutschland","description":"DECATHLON Deutschland Muenster, DE","counterparty":""},{"date":"2026-01-04","amount":-29.8,"name":"Faupel Schoene Schuhe","description":"Faupel Schoene Schuhe Frankenberg, DE","counterparty":""},{"date":"2026-01-07","amount":-3.78,"name":"1444 Deventer","description":"1444 Deventer Deventer, NL","counterparty":""},{"date":"2026-01-07","amount":-4.99,"name":"1444 Deventer","description":"1444 Deventer Deventer, NL","counterparty":""},{"date":"2026-01-15","amount":-13.0,"name":"DONERIX DEVENTER","description":"DONERIX DEVENTER DEVENTER, NL","counterparty":""},{"date":"2026-01-26","amount":-3.78,"name":"1444 Deventer","description":"1444 Deventer Deventer, NL","counterparty":""},{"date":"2026-01-30","amount":-5.88,"name":"1444 Deventer","description":"1444 Deventer Deventer, NL","counterparty":""},{"date":"2026-01-30","amount":-6.5,"name":"DONERIX DEVENTER","description":"DONERIX DEVENTER DEVENTER, NL","counterparty":""}],"Receitas/Transferências":[{"date":"2026-01-01","amount":148.45,"name":"Gustavo Keusen otero","description":"GUSTAVO KEUSEN OTERO","counterparty":"BE88967485279141"},{"date":"2026-01-05","amount":22.94,"name":"Uber","description":"TX2408684820XT Refund Uber","counterparty":"NL92ADYB2017400998"},{"date":"2026-01-05","amount":39.0,"name":"Uber","description":"TX2408727920XT Refund Uber","counterparty":"NL92ADYB2017400998"},{"date":"2026-01-06","amount":247.07,"name":"Wise","description":"Patricia","counterparty":"BE48967056780227"},{"date":"2026-01-06","amount":665.0,"name":"Gustavo Keusen otero","description":"GUSTAVO KEUSEN OTERO","counterparty":"BE88967485279141"},{"date":"2026-01-07","amount":163.0,"name":"Gustavo Keusen otero","description":"GUSTAVO KEUSEN OTERO","counterparty":"BE88967485279141"},{"date":"2026-01-16","amount":1.0,"name":"GOOGLE *TEMPORARY HOLD","description":"Refund: GOOGLE *TEMPORARY HOLD LONDON, GB","counterparty":""},{"date":"2026-01-22","amount":1000.0,"name":"Dev Patrick","description":"","counterparty":"NL45BUNQ2151760731"},{"date":"2026-01-28","amount":76.06,"name":"Gustavo Keusen otero","description":"GUSTAVO KEUSEN OTERO","counterparty":"BE88967485279141"},{"date":"2026-01-29","amount":154.19,"name":"Gustavo Keusen otero","description":"GUSTAVO KEUSEN OTERO","counterparty":"BE88967485279141"},{"date":"2026-01-29","amount":113.75,"name":"Gustavo Keusen otero","description":"GUSTAVO KEUSEN OTERO","counterparty":"BE88967485279141"},{"date":"2026-01-30","amount":35.07,"name":"Gustavo Keusen otero","description":"GUSTAVO KEUSEN OTERO","counterparty":"BE88967485279141"},{"date":"2026-01-30","amount":70.5,"name":"Gustavo Keusen otero","description":"GUSTAVO KEUSEN OTERO","counterparty":"BE88967485279141"},{"date":"2026-01-30","amount":70.62,"name":"Gustavo Keusen otero","description":"GUSTAVO KEUSEN OTERO","counterparty":"BE88967485279141"},{"date":"2026-01-30","amount":0.92,"name":"G. Keusen Otero","description":"","counterparty":"NL22BUNQ2170739971"},{"date":"2026-02-01","amount":70.26,"name":"Gustavo Keusen otero","description":"GUSTAVO KEUSEN OTERO","counterparty":"BE88967485279141"},{"date":"2026-02-01","amount":100.16,"name":"Gustavo Keusen otero","description":"GUSTAVO KEUSEN OTERO","counterparty":"BE88967485279141"}],"Farmácia & Saúde":[{"date":"2026-01-02","amount":-58.73,"name":"Holland & Barrett","description":"Holland & Barrett DEVENTER, NL","counterparty":""},{"date":"2026-01-03","amount":-32.7,"name":"ADLER-APOTHEKE","description":"ADLER-APOTHEKE Dortmund, DE","counterparty":""},{"date":"2026-01-12","amount":-17.54,"name":"Kruidvat 2208","description":"Kruidvat 2208 DEVENTER, NL","counterparty":""},{"date":"2026-01-26","amount":-1.59,"name":"Kruidvat 2208","description":"Kruidvat 2208 DEVENTER, NL","counterparty":""}],"Taxas Bancárias":[{"date":"2026-01-02","amount":-18.99,"name":"bunq BV","description":"nota fiscal 34582746","counterparty":"NL89BUNQ2025105584"},{"date":"2026-01-23","amount":-3.99,"name":"bunq BV","description":"invoice 35294240","counterparty":"NL89BUNQ2025105584"}],"Outros":[{"date":"2026-01-02","amount":-11.1,"name":"Coffeetogether B.V.","description":"Coffeetogether B.V. DEVENTER, NL","counterparty":""},{"date":"2026-01-02","amount":-6.79,"name":"CLASSIC TANKSTELLE WER","description":"CLASSIC TANKSTELLE WER WERL, DE","counterparty":""},{"date":"2026-01-03","amount":-50.0,"name":"P. Silva Gomes Dos Santos","description":"","counterparty":"NL28ABNA0137378149"},{"date":"2026-01-03","amount":-3.0,"name":"P. Silva Gomes Dos Santos","description":"","counterparty":"NL28ABNA0137378149"},{"date":"2026-01-03","amount":-7.6,"name":"Dortmunder Stadtwerke","description":"Dortmunder Stadtwerke Dortmund, DE","counterparty":""},{"date":"2026-01-03","amount":-78.54,"name":"Smeets Einzelhandels o","description":"Smeets Einzelhandels o Dortmund, DE","counterparty":""},{"date":"2026-01-03","amount":-4.98,"name":"Roetten Einzelhand","description":"Roetten Einzelhand Dortmund, DE","counterparty":""},{"date":"2026-01-04","amount":-28.0,"name":"SumUp  *Flasche  Hahn","description":"SumUp  *Flasche  Hahn Winterberg, DE","counterparty":""},{"date":"2026-01-05","amount":-2.69,"name":"STAR  Unna","description":"STAR  Unna Unna, DE","counterparty":""},{"date":"2026-01-05","amount":-1.24,"name":"STAR  Unna","description":"STAR  Unna Unna, DE","counterparty":""},{"date":"2026-01-06","amount":-1.0,"name":"Kiosk Het Pleintje","description":"Kiosk Het Pleintje DEVENTER, NL","counterparty":""},{"date":"2026-01-06","amount":-4.49,"name":"SUBWAY75237-0","description":"SUBWAY75237-0 RAALTE, NL","counterparty":""},{"date":"2026-01-08","amount":-4.1,"name":"BCK*NS Deventer 203","description":"BCK*NS Deventer 203 DEVENTER, NL","counterparty":""},{"date":"2026-01-08","amount":-17.7,"name":"PAY.nl*Sportbedrijf De","description":"PAY.nl*Sportbedrijf De DEVENTER, NL","counterparty":""},{"date":"2026-01-08","amount":-15.0,"name":"SumUp  *Free wheel de","description":"SumUp  *Free wheel de Vorden, NL","counterparty":""},{"date":"2026-01-08","amount":-7.2,"name":"PAY.nl*Sportbedrijf De","description":"PAY.nl*Sportbedrijf De DEVENTER, NL","counterparty":""},{"date":"2026-01-08","amount":-2.9,"name":"PAY.nl*Sportbedrijf De","description":"PAY.nl*Sportbedrijf De DEVENTER, NL","counterparty":""},{"date":"2026-01-09","amount":-4.1,"name":"BCK*NS Deventer 203","description":"BCK*NS Deventer 203 DEVENTER, NL","counterparty":""},{"date":"2026-01-09","amount":-10.55,"name":"HMS Host International","description":"HMS Host International Amsterdam, NL","counterparty":""},{"date":"2026-01-10","amount":-20.5,"name":"AIRALO","description":"AIRALO SINGAPORE, SG","counterparty":""},{"date":"2026-01-10","amount":-6.64,"name":"SUBWAY69450","description":"SUBWAY69450 DEVENTER, NL","counterparty":""},{"date":"2026-01-11","amount":-13.0,"name":"Kiosk Het Pleintje","description":"Kiosk Het Pleintje DEVENTER, NL","counterparty":""},{"date":"2026-01-12","amount":-42.79,"name":"PetsplacecomBV","description":"DVKLV942Q286GXW32NL8K 7180396004563325 NL002469681-NL","counterparty":"NL04ADYB2017400157"},{"date":"2026-01-16","amount":-1.99,"name":"BCK*SPAR UNIsat BV","description":"BCK*SPAR UNIsat BV DEVENTER, NL","counterparty":""},{"date":"2026-01-16","amount":-3.0,"name":"SumUp  *Vuong Nguyen","description":"SumUp  *Vuong Nguyen ZWOLLE, NL","counterparty":""},{"date":"2026-01-17","amount":-50.45,"name":"Wise","description":"N6XM556QKW96XJF35CQHY 7180806880457386 TW Payment 1925278659","counterparty":"NL04ADYB2017400157"},{"date":"2026-01-17","amount":-1.3,"name":"Kiosk Het Pleintje","description":"Kiosk Het Pleintje DEVENTER, NL","counterparty":""},{"date":"2026-01-17","amount":-11.7,"name":"Kiosk Het Pleintje","description":"Kiosk Het Pleintje DEVENTER, NL","counterparty":""},{"date":"2026-01-19","amount":-4.0,"name":"AIRALO","description":"AIRALO SINGAPORE, SG","counterparty":""},{"date":"2026-01-26","amount":-15.99,"name":"NETFLIX INTERNATIONAL B.V.","description":"Netflix Monthly Subscription","counterparty":"LU810670006550194759"},{"date":"2026-01-26","amount":-375.2,"name":"K. Van Nisselroooj Eo V. Ramos Bevilacqua Otero","description":"AMEX expenses January","counterparty":"NL24RABO0314134026"},{"date":"2026-01-26","amount":-184.0,"name":"Pure Energie Levering B.V.","description":"26770701 Termijn Jan 2026 ,85558984","counterparty":"NL05RABO0166295310"},{"date":"2026-01-27","amount":-595.5,"name":"P Silva Gomes Dos CJ","description":"Faculdade","counterparty":"NL08ABNA0142002305"},{"date":"2026-01-27","amount":-15.0,"name":"P Silva Gomes Dos CJ","description":"Doacao cachorros","counterparty":"NL08ABNA0142002305"},{"date":"2026-01-27","amount":-2.99,"name":"help.hbomax.com","description":"help.hbomax.com help.hbomax.com","counterparty":"NL65ADYB2006011162"},{"date":"2026-01-27","amount":-5.0,"name":"Amsterdam Music Dome Exploitatie B.V.","description":"VVTX535M2D842XG65F16H 7180245092007974 a70f017c-2444-4c37-a97a-2c3e1ac979d","counterparty":"NL04ADYB2017400157"},{"date":"2026-01-27","amount":-8.5,"name":"Ziggo Dome","description":"Ziggo Dome AMSTERDAM Z.O, NL","counterparty":""},{"date":"2026-01-27","amount":-12.5,"name":"Burger King Utrecht CS","description":"Burger King Utrecht CS Utrecht, NL","counterparty":""},{"date":"2026-01-28","amount":-8.48,"name":"GITHUB, INC.","description":"GITHUB, INC. SAN FRANCISCO, US 10.00 USD, 1 USD = 0.84800 EUR","counterparty":""},{"date":"2026-01-30","amount":-157.95,"name":"Zilveren Kruis Zorgverzekeringen  NV","description":"Premie Zilveren Kruis Relatienummer 191170446 Periode 01-02-2026 - 01-03-2026","counterparty":"NL58INGB0000003050"},{"date":"2026-01-31","amount":-5.45,"name":"Zettle_*Gijs Zijlstra","description":"Zettle_*Gijs Zijlstra Deventer, NL","counterparty":""}],"Coffeeshop":[{"date":"2026-01-02","amount":-22.0,"name":"De Stoelendans V.O.F.","description":"De Stoelendans V.O.F. DEVENTER, NL","counterparty":""},{"date":"2026-01-16","amount":-10.0,"name":"COFFEESHOP DR. PLEASUR","description":"COFFEESHOP DR. PLEASUR DEVENTER, NL","counterparty":""},{"date":"2026-01-16","amount":-12.0,"name":"COFFEESHOP DR. PLEASUR","description":"COFFEESHOP DR. PLEASUR DEVENTER, NL","counterparty":""},{"date":"2026-01-20","amount":-8.0,"name":"COFFEESHOP DR. PLEASUR","description":"COFFEESHOP DR. PLEASUR DEVENTER, NL","counterparty":""},{"date":"2026-01-25","amount":-24.0,"name":"Coffeeshop Dr Pleasure","description":"Coffeeshop Dr Pleasure Deventer, NL","counterparty":""},{"date":"2026-01-29","amount":-8.0,"name":"Coffeeshop Dr Pleasure","description":"Coffeeshop Dr Pleasure Deventer, NL","counterparty":""},{"date":"2026-01-30","amount":-1.1,"name":"Coffeeshop Dr Pleasure","description":"Coffeeshop Dr Pleasure Deventer, NL","counterparty":""},{"date":"2026-01-31","amount":-44.5,"name":"De Stoelendans V.O.F.","description":"De Stoelendans V.O.F. DEVENTER, NL","counterparty":""},{"date":"2026-02-01","amount":-12.0,"name":"Coffeeshop Dr Pleasure","description":"Coffeeshop Dr Pleasure Deventer, NL","counterparty":""}],"Restaurantes & Delivery":[{"date":"2026-01-02","amount":-28.0,"name":"CCV*K&B Venlo","description":"CCV*K&B Venlo DEVENTER, NL","counterparty":""},{"date":"2026-01-02","amount":-16.0,"name":"York Center Imbiss","description":"York Center Imbiss Muenster, DE","counterparty":""},{"date":"2026-01-03","amount":-10.0,"name":"Cafe Engemann","description":"Cafe Engemann Winterberg, DE","counterparty":""},{"date":"2026-01-04","amount":-22.9,"name":"Cafe Engemann","description":"Cafe Engemann Winterberg, DE","counterparty":""},{"date":"2026-01-04","amount":-68.3,"name":"Dorf Alm Winterberg","description":"Dorf Alm Winterberg Winterberg, DE","counterparty":""},{"date":"2026-01-04","amount":-9.2,"name":"Eiscafe Cortina","description":"Eiscafe Cortina Winterberg, DE","counterparty":""},{"date":"2026-01-05","amount":-50.1,"name":"Cafe Engemann","description":"Cafe Engemann Winterberg, DE","counterparty":""},{"date":"2026-01-12","amount":-13.0,"name":"MIMIK","description":"MIMIK DEVENTER, NL","counterparty":""},{"date":"2026-01-12","amount":-16.1,"name":"MIMIK eten & drinken","description":"MIMIK eten & drinken DEVENTER, NL","counterparty":""},{"date":"2026-01-18","amount":-15.65,"name":"Dominos","description":"FZJS8B5C2D842XG6JG0S 7180576607514275 46dc5831-cfb2-4fa8-b34f-6c03a29a249","counterparty":"NL04ADYB2017400157"},{"date":"2026-01-20","amount":-23.5,"name":"PAY.nl*Broodbode Deven","description":"PAY.nl*Broodbode Deven DEVENTER, NL","counterparty":""},{"date":"2026-01-30","amount":-4.9,"name":"CCV*DAVO PROEFLOKAAL D","description":"CCV*DAVO PROEFLOKAAL D DEVENTER, NL","counterparty":""},{"date":"2026-01-30","amount":-4.9,"name":"CCV*DAVO PROEFLOKAAL D","description":"CCV*DAVO PROEFLOKAAL D DEVENTER, NL","counterparty":""},{"date":"2026-01-30","amount":-4.9,"name":"CCV*DAVO PROEFLOKAAL D","description":"CCV*DAVO PROEFLOKAAL D DEVENTER, NL","counterparty":""}],"Planos de Saúde":[{"date":"2026-01-02","amount":-178.3,"name":"HollandZorg","description":"HollandZorg. Zorgverzekering(en) Z1, HZV. Polis 7572441. Januari 2026 t/m januari 2026","counterparty":"NL89INGB0672544814"}],"Lazer & Entretenimento":[{"date":"2026-01-04","amount":-39.0,"name":"Postwiesen-Liftgesells","description":"Postwiesen-Liftgesells Winterberg, DE","counterparty":""},{"date":"2026-01-06","amount":-91.04,"name":"TINQ DEVENTER DIEPENVE","description":"TINQ DEVENTER DIEPENVE DEVENTER, NL","counterparty":""},{"date":"2026-01-15","amount":-14.2,"name":"Midtown Blues Rock-C","description":"Midtown Blues Rock-C DEVENTER, NL","counterparty":""},{"date":"2026-01-15","amount":-10.6,"name":"Midtown Blues Rock-C","description":"Midtown Blues Rock-C DEVENTER, NL","counterparty":""},{"date":"2026-01-16","amount":-10.0,"name":"SumUp  *Studieverenigi","description":"SumUp  *Studieverenigi Deventer, NL","counterparty":""}],"Assinaturas & Serviços Digitais":[{"date":"2026-01-04","amount":-21.41,"name":"BAOL","description":"BAOL LOS ANGELES, US 24.95 USD, 1 USD = 0.85812 EUR","counterparty":""},{"date":"2026-01-12","amount":-5.66,"name":"Canva* 04759-25614261","description":"Canva* 04759-25614261 Sydney, AU 35.00 BRL, 1 BRL = 0.16171 EUR","counterparty":""},{"date":"2026-01-15","amount":-17.99,"name":"Spotify","description":"Spotify Stockholm, SE","counterparty":""},{"date":"2026-01-15","amount":-23.0,"name":"OPENAI *CHATGPT SUBSCR","description":"OPENAI *CHATGPT SUBSCR DUBLIN, IE","counterparty":""},{"date":"2026-01-16","amount":-1.0,"name":"GOOGLE *TEMPORARY HOLD","description":"GOOGLE *TEMPORARY HOLD LONDON, GB","counterparty":""},{"date":"2026-01-16","amount":-8.99,"name":"GOOGLE *YouTubePremium","description":"GOOGLE *YouTubePremium LONDON, GB","counterparty":""},{"date":"2026-01-16","amount":-9.99,"name":"SINGA PREMIUM","description":"SINGA PREMIUM HELSINKI, FI","counterparty":""},{"date":"2026-01-17","amount":-1.95,"name":"MICROSOFT*MICROSOFT 36","description":"MICROSOFT*MICROSOFT 36 SAO PAULO, BR 12.00 BRL, 1 BRL = 0.16250 EUR","counterparty":""}],"Moradia":[{"date":"2026-01-12","amount":-66.0,"name":"KPN - Mobiel","description":"Factuur 05-01-2026, klantnummer 40109735267, kpn.com/mobielefactuur.","counterparty":"NL83INGB0000325513"},{"date":"2026-01-12","amount":-60.26,"name":"KPN - Mobiel","description":"Factuur 05-01-2026, klantnummer 40109589184, kpn.com/mobielefactuur.","counterparty":"NL83INGB0000325513"},{"date":"2026-01-14","amount":-54.23,"name":"KPN B.V.","description":"Factuur 08-01-2026, klantnummer 9110137639, kpn.com/thuisfactuur.","counterparty":"NL41INGB0000467598"},{"date":"2026-01-22","amount":-21.0,"name":"VITENS NV","description":"Factuurnr 133201729748, Klantnr 1012734774 BTW 1,73, 7413 XE 29,, Termijnfactuur JAN","counterparty":"NL94INGB0000869000"},{"date":"2026-02-01","amount":-1310.0,"name":"DERDENGELDEN HUNWONEN","description":"BETALINGSKENMERK: 9001001002880015 Huurincasso februari  Periode februari 2026 Molenbelt 29","counterparty":"NL74ABNA0554489058"}],"Empresa Gustavo Otero":[{"date":"2026-01-14","amount":-9.99,"name":"APPLE.COM/BILL","description":"APPLE.COM/BILL CORK, IE","counterparty":""},{"date":"2026-01-18","amount":-31.99,"name":"APPLE.COM/BILL","description":"APPLE.COM/BILL CORK, IE","counterparty":""},{"date":"2026-01-23","amount":-19.95,"name":"APPLE.COM/BILL","description":"APPLE.COM/BILL CORK, IE","counterparty":""},{"date":"2026-01-25","amount":-29.99,"name":"APPLE.COM/BILL","description":"APPLE.COM/BILL CORK, IE","counterparty":""},{"date":"2026-01-28","amount":-2.99,"name":"APPLE.COM/BILL","description":"APPLE.COM/BILL CORK, IE","counterparty":""},{"date":"2026-01-31","amount":-10.94,"name":"FACEBK *TBS83CR272","description":"FACEBK *TBS83CR272 SAO PAULO, BR 67.03 BRL, 1 BRL = 0.16321 EUR","counterparty":""}],"Academia":[{"date":"2026-01-17","amount":-36.99,"name":"Sportcity","description":"SportCity membership 20-01-2026 - 16-02-2026 Patrick Silva Gomes Dos Santos","counterparty":"NL54RABO0334583608"},{"date":"2026-01-17","amount":-32.99,"name":"Sportcity","description":"SportCity membership 04-01-2026 - 31-01-2026 Gustavo Otero","counterparty":"NL54RABO0334583608"}]}},"2026-02":{"label":"Fevereiro 2026","data":{"Compras & Varejo":[{"date":"2026-02-02","amount":-18.99,"name":"COOLBLUE BY BUCKAROO","description":"Coolblue abonnement factuurnummer CB02572372 incl 21 procent BTW","counterparty":"NL09DEUT0265258561"},{"date":"2026-02-02","amount":-19.99,"name":"COOLBLUE BY BUCKAROO","description":"Coolblue abonnement factuurnummer CB02571951 incl 21 procent BTW","counterparty":"NL09DEUT0265258561"},{"date":"2026-02-03","amount":-3.95,"name":"1444 Deventer","description":"1444 Deventer Deventer, NL","counterparty":""},{"date":"2026-02-12","amount":-19.5,"name":"DONERIX DEVENTER","description":"DONERIX DEVENTER DEVENTER, NL","counterparty":""},{"date":"2026-02-17","amount":-29.99,"name":"TOYCHAMP DEVENTER","description":"TOYCHAMP DEVENTER DEVENTER, NL","counterparty":""},{"date":"2026-02-18","amount":-5.93,"name":"1444 Deventer","description":"1444 Deventer Deventer, NL","counterparty":""},{"date":"2026-02-19","amount":-20.26,"name":"1444 Deventer","description":"1444 Deventer Deventer, NL","counterparty":""},{"date":"2026-02-21","amount":-18.0,"name":"DONERIX DEVENTER","description":"DONERIX DEVENTER DEVENTER, NL","counterparty":""},{"date":"2026-02-22","amount":-10.79,"name":"Action 1132","description":"Action 1132 Deventer, NL","counterparty":""}],"Supermercado":[{"date":"2026-02-02","amount":-2.77,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-02","amount":-4.68,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-03","amount":-8.88,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-03","amount":-4.27,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-04","amount":-0.89,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-04","amount":-3.13,"name":"Jumbo Deventer","description":"Jumbo Deventer DEVENTER, NL","counterparty":""},{"date":"2026-02-04","amount":-2.79,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-05","amount":-3.03,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-05","amount":-2.48,"name":"Jumbo Deventer","description":"Jumbo Deventer DEVENTER, NL","counterparty":""},{"date":"2026-02-05","amount":-11.45,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-05","amount":-5.98,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-06","amount":-13.96,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-07","amount":-2.14,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-08","amount":-18.28,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-08","amount":-10.77,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-09","amount":-1.72,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-09","amount":-17.05,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-10","amount":-2.14,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-10","amount":-3.48,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-10","amount":-9.68,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-10","amount":-7.77,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-10","amount":-8.17,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-11","amount":-2.14,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-11","amount":-6.62,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-11","amount":-6.87,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-12","amount":-12.37,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-13","amount":-1.99,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-13","amount":-6.46,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-13","amount":-7.43,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-13","amount":-18.58,"name":"Albert Heijn 1358","description":"Albert Heijn 1358 DEVENTER, NL","counterparty":""},{"date":"2026-02-13","amount":-0.89,"name":"Albert Heijn 1358","description":"Albert Heijn 1358 DEVENTER, NL","counterparty":""},{"date":"2026-02-13","amount":-15.1,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-14","amount":-7.34,"name":"DIRK VDBROEK FIL3365","description":"DIRK VDBROEK FIL3365 DEVENTER, NL","counterparty":""},{"date":"2026-02-14","amount":-28.99,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-15","amount":-9.07,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-15","amount":-14.07,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-16","amount":-9.95,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-16","amount":-36.99,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-17","amount":-6.48,"name":"Albert Heijn 1358","description":"Albert Heijn 1358 DEVENTER, NL","counterparty":""},{"date":"2026-02-17","amount":-10.83,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-18","amount":-1.99,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-18","amount":-1.39,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-18","amount":-3.88,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-18","amount":-11.99,"name":"Albert Heijn 1358","description":"Albert Heijn 1358 DEVENTER, NL","counterparty":""},{"date":"2026-02-18","amount":-9.68,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-19","amount":-1.9,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-19","amount":-13.66,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-19","amount":-8.99,"name":"Jumbo Deventer","description":"Jumbo Deventer DEVENTER, NL","counterparty":""},{"date":"2026-02-19","amount":-1.78,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-19","amount":-0.89,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-19","amount":-3.78,"name":"Albert Heijn 1358","description":"Albert Heijn 1358 DEVENTER, NL","counterparty":""},{"date":"2026-02-19","amount":-18.99,"name":"Albert Heijn 1358","description":"Albert Heijn 1358 DEVENTER, NL","counterparty":""},{"date":"2026-02-19","amount":-32.28,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-19","amount":-7.1,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-20","amount":-7.89,"name":"Jumbo Raadhuisplein","description":"Jumbo Raadhuisplein BODEGRAVEN, NL","counterparty":""},{"date":"2026-02-20","amount":-9.72,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-20","amount":-11.32,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-21","amount":-6.87,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-22","amount":-23.56,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-23","amount":-0.99,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-23","amount":-12.25,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-24","amount":-4.69,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-24","amount":-24.97,"name":"Albert Heijn 1358","description":"Albert Heijn 1358 DEVENTER, NL","counterparty":""},{"date":"2026-02-25","amount":-3.99,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-25","amount":-8.07,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-25","amount":-4.89,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-26","amount":-10.51,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-26","amount":-2.4,"name":"PLUS Beestenmarkt","description":"PLUS Beestenmarkt DEVENTER, NL","counterparty":""},{"date":"2026-02-07","amount":-2.75,"name":"BCK*AH to go 5801","description":"BCK*AH to go 5801 S-HERTOGENBOS, NL","counterparty":""},{"date":"2026-02-07","amount":-1.9,"name":"BCK*AH Station Den Bos","description":"BCK*AH Station Den Bos S-HERTOGENBOS, NL","counterparty":""},{"date":"2026-02-07","amount":-2.3,"name":"BCK*AH to go 5801","description":"BCK*AH to go 5801 S-HERTOGENBOS, NL","counterparty":""},{"date":"2026-02-20","amount":-2.3,"name":"BCK*AH to go 5873 Utre","description":"BCK*AH to go 5873 Utre UTRECHT, NL","counterparty":""},{"date":"2026-02-22","amount":-1.3,"name":"BCK*AH to go 5801","description":"BCK*AH to go 5801 S-HERTOGENBOS, NL","counterparty":""},{"date":"2026-02-22","amount":-2.3,"name":"BCK*AH to go 5801","description":"BCK*AH to go 5801 S-HERTOGENBOS, NL","counterparty":""}],"Taxas Bancárias":[{"date":"2026-02-02","amount":-18.99,"name":"bunq BV","description":"nota fiscal 35649109","counterparty":"NL89BUNQ2025105584"},{"date":"2026-02-23","amount":-3.99,"name":"bunq BV","description":"invoice 36386997","counterparty":"NL89BUNQ2025105584"}],"Transporte":[{"date":"2026-02-02","amount":-2.32,"name":"NLOVDRJZ8P69VGRJEY","description":"NLOVDRJZ8P69VGRJEY www.ovpay.nl, NL","counterparty":""},{"date":"2026-02-07","amount":-4.75,"name":"5017 AT3 Den Bosch","description":"5017 AT3 Den Bosch 'S-HERTOGENBO, NL","counterparty":""},{"date":"2026-02-07","amount":-4.75,"name":"5017 AT3 Den Bosch","description":"5017 AT3 Den Bosch 'S-HERTOGENBO, NL","counterparty":""},{"date":"2026-02-09","amount":-130.88,"name":"NS GROEP IZ NS REIZIGERS","description":"Factuur: 433002977670","counterparty":"NL14ABNA0576850675"},{"date":"2026-02-17","amount":-140.3,"name":"NS GROEP IZ NS REIZIGERS","description":"Factuur: 430019509900","counterparty":"NL14ABNA0576850675"},{"date":"2026-02-22","amount":-4.0,"name":"5017 AT5 Den Bosch","description":"5017 AT5 Den Bosch 'S-HERTOGENBO, NL","counterparty":""}],"Receitas/Transferências":[{"date":"2026-02-02","amount":123.7,"name":"Gustavo Keusen otero","description":"GUSTAVO KEUSEN OTERO","counterparty":"BE88967485279141"},{"date":"2026-02-02","amount":25.14,"name":"Gustavo Keusen otero","description":"GUSTAVO KEUSEN OTERO","counterparty":"BE88967485279141"},{"date":"2026-02-03","amount":100.0,"name":"Dev Patrick","description":"","counterparty":"NL45BUNQ2151760731"},{"date":"2026-02-04","amount":38.74,"name":"Gustavo Keusen otero","description":"GUSTAVO KEUSEN OTERO","counterparty":"BE88967485279141"},{"date":"2026-02-05","amount":55.77,"name":"Gustavo Keusen otero","description":"GUSTAVO KEUSEN OTERO","counterparty":"BE88967485279141"},{"date":"2026-02-06","amount":46.73,"name":"Gustavo Keusen otero","description":"GUSTAVO KEUSEN OTERO","counterparty":"BE88967485279141"},{"date":"2026-02-06","amount":54.49,"name":"Gustavo Keusen otero","description":"GUSTAVO KEUSEN OTERO","counterparty":"BE88967485279141"},{"date":"2026-02-09","amount":147.86,"name":"Wise","description":"VITOR MANUEL ROCHA CERQUEIRA","counterparty":"BE48967056780227"},{"date":"2026-02-10","amount":31.01,"name":"Gustavo Keusen otero","description":"GUSTAVO KEUSEN OTERO","counterparty":"BE88967485279141"},{"date":"2026-02-11","amount":3.56,"name":"Gustavo Keusen otero","description":"GUSTAVO KEUSEN OTERO","counterparty":"BE88967485279141"},{"date":"2026-02-11","amount":66.62,"name":"Gustavo Keusen otero","description":"GUSTAVO KEUSEN OTERO","counterparty":"BE88967485279141"},{"date":"2026-02-11","amount":1200.0,"name":"Dev Patrick","description":"","counterparty":"NL45BUNQ2151760731"},{"date":"2026-02-11","amount":78.14,"name":"Gustavo Keusen otero","description":"GUSTAVO KEUSEN OTERO","counterparty":"BE88967485279141"},{"date":"2026-02-12","amount":42.99,"name":"Gustavo Keusen otero","description":"GUSTAVO KEUSEN OTERO","counterparty":"BE88967485279141"},{"date":"2026-02-13","amount":38.29,"name":"Gustavo Keusen otero","description":"GUSTAVO KEUSEN OTERO","counterparty":"BE88967485279141"},{"date":"2026-02-14","amount":49.91,"name":"Gustavo Keusen otero","description":"GUSTAVO KEUSEN OTERO","counterparty":"BE88967485279141"},{"date":"2026-02-15","amount":0.15,"name":"bunq","description":"Congratulations, you won back your payment, simply by using your bunq Card!","counterparty":"NL14BUNQ2183374462"},{"date":"2026-02-15","amount":0.09,"name":"bunq","description":"Congratulations, you won back your payment, simply by using your bunq Card!","counterparty":"NL14BUNQ2183374462"},{"date":"2026-02-18","amount":54.37,"name":"Gustavo Keusen otero","description":"GUSTAVO KEUSEN OTERO","counterparty":"BE88967485279141"},{"date":"2026-02-19","amount":43.69,"name":"Gustavo Keusen otero","description":"GUSTAVO KEUSEN OTERO","counterparty":"BE88967485279141"},{"date":"2026-02-23","amount":233.17,"name":"Gustavo Keusen otero","description":"GUSTAVO KEUSEN OTERO","counterparty":"BE88967485279141"},{"date":"2026-02-23","amount":78.82,"name":"Gustavo Keusen otero","description":"GUSTAVO KEUSEN OTERO","counterparty":"BE88967485279141"},{"date":"2026-02-24","amount":175.6,"name":"Gustavo Keusen otero","description":"GUSTAVO KEUSEN OTERO","counterparty":"BE88967485279141"},{"date":"2026-02-24","amount":418.75,"name":"Gustavo Keusen otero","description":"GUSTAVO KEUSEN OTERO","counterparty":"BE88967485279141"},{"date":"2026-02-24","amount":88.64,"name":"Gustavo Keusen otero","description":"GUSTAVO KEUSEN OTERO","counterparty":"BE88967485279141"},{"date":"2026-02-25","amount":126.45,"name":"Gustavo Keusen otero","description":"GUSTAVO KEUSEN OTERO","counterparty":"BE88967485279141"},{"date":"2026-02-25","amount":143.63,"name":"Gustavo Keusen otero","description":"GUSTAVO KEUSEN OTERO","counterparty":"BE88967485279141"},{"date":"2026-02-25","amount":158.04,"name":"Gustavo Keusen otero","description":"GUSTAVO KEUSEN OTERO","counterparty":"BE88967485279141"},{"date":"2026-02-25","amount":68.09,"name":"Gustavo Keusen otero","description":"GUSTAVO KEUSEN OTERO","counterparty":"BE88967485279141"},{"date":"2026-02-25","amount":136.34,"name":"Gustavo Keusen otero","description":"GUSTAVO KEUSEN OTERO","counterparty":"BE88967485279141"},{"date":"2026-02-25","amount":36.5,"name":"Gustavo Keusen otero","description":"GUSTAVO KEUSEN OTERO","counterparty":"BE88967485279141"},{"date":"2026-02-26","amount":103.04,"name":"Gustavo Keusen otero","description":"GUSTAVO KEUSEN OTERO","counterparty":"BE88967485279141"},{"date":"2026-02-26","amount":144.12,"name":"Gustavo Keusen otero","description":"GUSTAVO KEUSEN OTERO","counterparty":"BE88967485279141"},{"date":"2026-02-26","amount":56.94,"name":"Gustavo Keusen otero","description":"GUSTAVO KEUSEN OTERO","counterparty":"BE88967485279141"},{"date":"2026-02-26","amount":39.5,"name":"Gustavo Keusen otero","description":"GUSTAVO KEUSEN OTERO","counterparty":"BE88967485279141"},{"date":"2026-02-26","amount":158.4,"name":"Gustavo Keusen otero","description":"GUSTAVO KEUSEN OTERO","counterparty":"BE88967485279141"},{"date":"2026-02-26","amount":139.9,"name":"Patrick Silva Gomes dos Santos","description":"PATRICK SILVA GOMES DOS SANTOS","counterparty":"BE13967340273639"}],"Planos de Saúde":[{"date":"2026-02-02","amount":-178.3,"name":"HollandZorg","description":"HollandZorg. Zorgverzekering(en) Z1, HZV. Polis 7572441. Februari 2026 t/m februari 2026","counterparty":"NL89INGB0672544814"},{"date":"2026-02-26","amount":-385.0,"name":"HollandZorg","description":"HollandZorg. Uw eigen bijdrage voor declaratie(s): 41543692.","counterparty":"NL89INGB0672544814"}],"Empresa Gustavo Otero":[{"date":"2026-02-02","amount":-12.22,"name":"ZOOM.COM 888-799-9666","description":"ZOOM.COM 888-799-9666 SAN JOSE, US 14.44 USD, 1 USD = 0.84626 EUR","counterparty":""},{"date":"2026-02-14","amount":-9.99,"name":"APPLE.COM/BILL","description":"APPLE.COM/BILL CORK, IE","counterparty":""},{"date":"2026-02-17","amount":-18.5,"name":"FACEBK *692L8DZ272","description":"FACEBK *692L8DZ272 SAO PAULO, BR 113.94 BRL, 1 BRL = 0.16237 EUR","counterparty":""},{"date":"2026-02-18","amount":-31.99,"name":"APPLE.COM/BILL","description":"APPLE.COM/BILL CORK, IE","counterparty":""},{"date":"2026-02-19","amount":-18.69,"name":"FACEBK *UGXK6DD372","description":"FACEBK *UGXK6DD372 SAO PAULO, BR 114.04 BRL, 1 BRL = 0.16389 EUR","counterparty":""},{"date":"2026-02-23","amount":-19.95,"name":"APPLE.COM/BILL","description":"APPLE.COM/BILL CORK, IE","counterparty":""},{"date":"2026-02-25","amount":-29.99,"name":"APPLE.COM/BILL","description":"APPLE.COM/BILL CORK, IE","counterparty":""}],"Farmácia & Saúde":[{"date":"2026-02-03","amount":-11.99,"name":"Kruidvat 7614","description":"Kruidvat 7614 DEVENTER, NL","counterparty":""},{"date":"2026-02-14","amount":-3.09,"name":"Kruidvat 2208","description":"Kruidvat 2208 DEVENTER, NL","counterparty":""},{"date":"2026-02-18","amount":-6.74,"name":"Holland & Barrett","description":"Holland & Barrett DEVENTER, NL","counterparty":""}],"Academia":[{"date":"2026-02-03","amount":-39.99,"name":"Sportcity","description":"SportCity membership 01-02-2026 - 28-02-2026 Gustavo Otero","counterparty":"NL54RABO0334583608"},{"date":"2026-02-17","amount":-36.99,"name":"Sportcity","description":"SportCity membership 17-02-2026 - 16-03-2026 Patrick Silva Gomes Dos Santos","counterparty":"NL54RABO0334583608"}],"Assinaturas & Serviços Digitais":[{"date":"2026-02-03","amount":-8.2,"name":"DL*GOOGLE Google","description":"DL*GOOGLE Google SAO PAULO, BR 49.99 BRL, 1 BRL = 0.16403 EUR","counterparty":""},{"date":"2026-02-04","amount":-2.46,"name":"DL*GOOGLE Google","description":"DL*GOOGLE Google SAO PAULO, BR 14.99 BRL, 1 BRL = 0.16411 EUR","counterparty":""},{"date":"2026-02-11","amount":-17.99,"name":"Spotify AB","description":"QB54GPCJN7SHFTX32K8A1 7180405067423766 P3F3E6A4F1","counterparty":"NL04ADYB2017400157"},{"date":"2026-02-11","amount":-23.0,"name":"OPENAI *CHATGPT SUBSCR","description":"OPENAI *CHATGPT SUBSCR DUBLIN, IE","counterparty":""},{"date":"2026-02-12","amount":-4.25,"name":"RAILWAY","description":"RAILWAY SAN FRANCISCO, US 5.00 USD, 1 USD = 0.85000 EUR","counterparty":""},{"date":"2026-02-12","amount":-5.75,"name":"Canva* 04790-34247728","description":"Canva* 04790-34247728 Sydney, AU 35.00 BRL, 1 BRL = 0.16429 EUR","counterparty":""},{"date":"2026-02-13","amount":-9.99,"name":"SINGA PREMIUM","description":"SINGA PREMIUM HELSINKI, FI","counterparty":""},{"date":"2026-02-16","amount":-8.99,"name":"GOOGLE *YouTubePremium","description":"GOOGLE *YouTubePremium LONDON, GB","counterparty":""},{"date":"2026-02-17","amount":-1.95,"name":"Microsoft*Microsoft 36","description":"Microsoft*Microsoft 36 Sao Paulo, BR 12.00 BRL, 1 BRL = 0.16250 EUR","counterparty":""},{"date":"2026-02-18","amount":-6.99,"name":"OTT* WOW PRESENTS PLUS","description":"OTT* WOW PRESENTS PLUS LOS ANGELES, US","counterparty":""}],"Coffeeshop":[{"date":"2026-02-04","amount":-12.0,"name":"Coffeeshop Dr Pleasure","description":"Coffeeshop Dr Pleasure Deventer, NL","counterparty":""},{"date":"2026-02-07","amount":-12.0,"name":"COFFEESHOP DR. PLEASUR","description":"COFFEESHOP DR. PLEASUR DEVENTER, NL","counterparty":""},{"date":"2026-02-13","amount":-12.0,"name":"Coffeeshop Dr Pleasure","description":"Coffeeshop Dr Pleasure Deventer, NL","counterparty":""},{"date":"2026-02-15","amount":-9.0,"name":"Coffeeshop Dr Pleasure","description":"Coffeeshop Dr Pleasure Deventer, NL","counterparty":""},{"date":"2026-02-19","amount":-12.0,"name":"COFFEESHOP DR. PLEASUR","description":"COFFEESHOP DR. PLEASUR DEVENTER, NL","counterparty":""},{"date":"2026-02-23","amount":-12.0,"name":"COFFEESHOP DR. PLEASUR","description":"COFFEESHOP DR. PLEASUR DEVENTER, NL","counterparty":""}],"Restaurantes & Delivery":[{"date":"2026-02-04","amount":-17.49,"name":"Dominos","description":"V2SJVP79RSB2K8F3JG0S 7180774179954196 d5c1f4e2-8f44-4d81-b7a0-58e9a5bff32","counterparty":"NL04ADYB2017400157"},{"date":"2026-02-07","amount":-9.1,"name":"CCV*DAVO PROEFLOKAAL D","description":"CCV*DAVO PROEFLOKAAL D DEVENTER, NL","counterparty":""},{"date":"2026-02-07","amount":-8.9,"name":"CCV*DAVO PROEFLOKAAL D","description":"CCV*DAVO PROEFLOKAAL D DEVENTER, NL","counterparty":""},{"date":"2026-02-07","amount":-17.49,"name":"Dominos","description":"ZTP829Q8HZ66LFG6JG0S 7180956873704209 fc6b0be9-72ab-4d87-b12a-7ce2925e8c4","counterparty":"NL04ADYB2017400157"},{"date":"2026-02-15","amount":-16.99,"name":"Dominos","description":"VXG6B7TRWL4JPRG6JG0S 7180704773591664 0ab1b767-3986-4de4-855f-5cc5f04d157","counterparty":"NL04ADYB2017400157"},{"date":"2026-02-18","amount":-33.0,"name":"CCV*Banketbakkerij Len","description":"CCV*Banketbakkerij Len DEVENTER, NL","counterparty":""},{"date":"2026-02-21","amount":-26.0,"name":"Stichting MIMIK","description":"3298134036X9f836 7370286852393592 Bestelling 31524794","counterparty":"NL35RABO0117713678"},{"date":"2026-02-21","amount":-6.95,"name":"MIMIK eten & drinken","description":"MIMIK eten & drinken DEVENTER, NL","counterparty":""},{"date":"2026-02-23","amount":-7.5,"name":"PAY.nl*Broodbode Deven","description":"PAY.nl*Broodbode Deven DEVENTER, NL","counterparty":""},{"date":"2026-02-23","amount":-7.0,"name":"CCV*K&B Venlo","description":"CCV*K&B Venlo DEVENTER, NL","counterparty":""},{"date":"2026-02-26","amount":-7.5,"name":"PAY.nl*Broodbode Deven","description":"PAY.nl*Broodbode Deven DEVENTER, NL","counterparty":""},{"date":"2026-02-26","amount":-24.48,"name":"Dominos","description":"QPP82WJWBR2J83X3JG0S 7180426255168199 e0411fb3-ea00-4ca5-8449-03047d56156","counterparty":"NL04ADYB2017400157"}],"Lazer & Entretenimento":[{"date":"2026-02-05","amount":-6.9,"name":"Midtown Blues Rock-C","description":"Midtown Blues Rock-C DEVENTER, NL","counterparty":""},{"date":"2026-02-12","amount":-10.0,"name":"SumUp  *Studieverenigi","description":"SumUp  *Studieverenigi Deventer, NL","counterparty":""},{"date":"2026-02-12","amount":-6.9,"name":"Midtown Blues Rock-C","description":"Midtown Blues Rock-C DEVENTER, NL","counterparty":""}],"Educação":[{"date":"2026-02-06","amount":-4.15,"name":"Saxion 1814","description":"Saxion 1814 DEVENTER, NL","counterparty":""},{"date":"2026-02-25","amount":-625.0,"name":"P Silva Gomes Dos CJ","description":"","counterparty":"NL08ABNA0142002305"}],"Outros":[{"date":"2026-02-06","amount":-39.0,"name":"XP*T BOOKEO24.COM","description":"XP*T BOOKEO24.COM DUBLIN, IE","counterparty":""}],"Moradia":[{"date":"2026-02-11","amount":-54.23,"name":"KPN B.V.","description":"Factuur 08-02-2026, klantnummer 9110137639, kpn.com/thuisfactuur.","counterparty":"NL41INGB0000467598"},{"date":"2026-02-11","amount":-66.0,"name":"KPN - Mobiel","description":"Factuur 03-02-2026, klantnummer 40109735267, kpn.com/mobielefactuur.","counterparty":"NL83INGB0000325513"},{"date":"2026-02-11","amount":-60.26,"name":"KPN - Mobiel","description":"Factuur 03-02-2026, klantnummer 40109589184, kpn.com/mobielefactuur.","counterparty":"NL83INGB0000325513"},{"date":"2026-02-26","amount":-1310.0,"name":"DERDENGELDEN HUNWONEN","description":"BETALINGSKENMERK: 7001001002880016 Huurincasso maart  Periode maart 2026 Molenbelt 29","counterparty":"NL74ABNA0554489058"},{"date":"2026-02-26","amount":-21.0,"name":"VITENS NV","description":"Factuurnr 131601726932, Klantnr 1012734774 BTW 1,73, 7413 XE 29,, Termijnfactuur FEB","counterparty":"NL94INGB0000869000"}]}}};
+
+        let currentMonth = null;
+        let charts = { expenses: null, pie: null, budget: null };
+
+        function formatCurrency(value) {
+            return '€ ' + Math.abs(value).toFixed(2).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+        }
+
+        function formatDate(dateStr) {
+            const [year, month, day] = dateStr.split('-');
+            return `${day}/${month}`;
+        }
+
+        function destroyCharts() {
+            Object.values(charts).forEach(chart => chart?.destroy());
+        }
+
+        function getBadgeClass(percent) {
+            if (percent >= 100) return 'bg-red-100 text-red-800';
+            if (percent >= 80) return 'bg-yellow-100 text-yellow-800';
+            return 'bg-green-100 text-green-800';
+        }
+
+        function renderData(data, monthLabel) {
+            destroyCharts();
+
+            const categories = {};
+            let totalIncome = 0;
+            let totalExpenses = 0;
+            
+            for (const [category, transactions] of Object.entries(data)) {
+                const total = transactions.reduce((sum, t) => sum + t.amount, 0);
+                categories[category] = { transactions, total };
+                
+                if (total > 0) totalIncome += total;
+                else totalExpenses += total;
+            }
+            
+            const sortedCategories = Object.entries(categories).sort((a, b) => {
+                if (a[0] === 'Receitas/Transferências') return -1;
+                if (b[0] === 'Receitas/Transferências') return 1;
+                return Math.abs(b[1].total) - Math.abs(a[1].total);
+            });
+
+            const balance = totalIncome + totalExpenses;
+            const totalBudget = budget.total_monthly_budget;
+            const totalSpent = Math.abs(totalExpenses);
+            const remaining = totalBudget - totalSpent;
+            const percentUsed = (totalSpent / totalBudget * 100).toFixed(1);
+            
+            // Análise narrativa
+            let narrativeHTML = '';
+            if (monthlyAnalysis[currentMonth]) {
+                const paragraphs = monthlyAnalysis[currentMonth].narrative.split('|');
+                narrativeHTML = `
+                    <div class="mb-8 overflow-hidden rounded-lg bg-white shadow">
+                        <div class="bg-gradient-to-r from-emerald-500 to-teal-600 px-6 py-5">
+                            <h3 class="text-lg font-semibold text-white">📊 Análise do Mês</h3>
+                        </div>
+                        <div class="px-6 py-5 space-y-3">
+                            ${paragraphs.map(p => `<p class="text-sm text-gray-700 leading-relaxed">${p}</p>`).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Stats cards
+            const statsHTML = `
+                <dl class="mb-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-5">
+                    <div class="overflow-hidden rounded-lg bg-white px-4 py-5 shadow sm:p-6">
+                        <dt class="truncate text-sm font-medium text-gray-500">Receitas</dt>
+                        <dd class="mt-1 text-3xl font-semibold tracking-tight text-green-600">${formatCurrency(totalIncome)}</dd>
+                    </div>
+                    <div class="overflow-hidden rounded-lg bg-white px-4 py-5 shadow sm:p-6">
+                        <dt class="truncate text-sm font-medium text-gray-500">Despesas</dt>
+                        <dd class="mt-1 text-3xl font-semibold tracking-tight text-red-600">${formatCurrency(totalExpenses)}</dd>
+                    </div>
+                    <div class="overflow-hidden rounded-lg bg-white px-4 py-5 shadow sm:p-6">
+                        <dt class="truncate text-sm font-medium text-gray-500">Saldo</dt>
+                        <dd class="mt-1 text-3xl font-semibold tracking-tight ${balance >= 0 ? 'text-emerald-600' : 'text-red-600'}">
+                            ${balance >= 0 ? '+' : ''}${formatCurrency(balance)}
+                        </dd>
+                    </div>
+                    <div class="overflow-hidden rounded-lg bg-white px-4 py-5 shadow sm:p-6">
+                        <dt class="truncate text-sm font-medium text-gray-500">Orçamento</dt>
+                        <dd class="mt-1 text-3xl font-semibold tracking-tight text-gray-900">€ ${totalBudget.toFixed(2).replace('.', ',')}</dd>
+                    </div>
+                    <div class="overflow-hidden rounded-lg bg-white px-4 py-5 shadow sm:p-6">
+                        <dt class="truncate text-sm font-medium text-gray-500">Restante</dt>
+                        <dd class="mt-1 text-3xl font-semibold tracking-tight ${remaining >= 0 ? 'text-green-600' : 'text-red-600'}">
+                            ${remaining >= 0 ? '' : '-'}€ ${Math.abs(remaining).toFixed(2).replace('.', ',')}
+                        </dd>
+                        <dd class="mt-1 text-xs text-gray-500">${percentUsed}% usado</dd>
+                    </div>
+                </dl>
+            `;
+
+            // Charts
+            const expenseCategories = sortedCategories.filter(([cat, data]) => data.total < 0);
+            const chartsHTML = `
+                <div class="mb-8 grid grid-cols-1 gap-5 lg:grid-cols-2">
+                    <div class="overflow-hidden rounded-lg bg-white shadow">
+                        <div class="px-6 py-5">
+                            <h3 class="text-base font-semibold text-gray-900">📊 Despesas por Categoria</h3>
+                            <div class="mt-4" style="height: 300px;">
+                                <canvas id="expensesChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="overflow-hidden rounded-lg bg-white shadow">
+                        <div class="px-6 py-5">
+                            <h3 class="text-base font-semibold text-gray-900">🥧 Distribuição de Gastos</h3>
+                            <div class="mt-4" style="height: 300px;">
+                                <canvas id="pieChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-8 overflow-hidden rounded-lg bg-white shadow">
+                    <div class="px-6 py-5">
+                        <h3 class="text-base font-semibold text-gray-900">💰 Orçado vs Real</h3>
+                        <div class="mt-4" style="height: 300px;">
+                            <canvas id="budgetChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Categories list
+            const categoriesHTML = `
+                <div class="space-y-4">
+                    ${sortedCategories.map(([category, data]) => {
+                        const isPositive = data.total > 0;
+                        let budgetBadge = '';
+                        
+                        if (budget.monthly_budget[category] && !isPositive) {
+                            const budgeted = budget.monthly_budget[category];
+                            const spent = Math.abs(data.total);
+                            const percent = (spent / budgeted * 100).toFixed(0);
+                            const diff = budgeted - spent;
+                            const badgeClass = getBadgeClass(percent);
+                            const text = percent >= 100 
+                                ? `${percent}% (€${Math.abs(diff).toFixed(0)} acima)`
+                                : `${percent}% (€${diff.toFixed(0)} restante)`;
+                            
+                            budgetBadge = `<span class="ml-2 inline-flex items-center rounded-full ${badgeClass} px-2.5 py-0.5 text-xs font-medium">${text}</span>`;
+                        }
+                        
+                        return `
+                            <div class="overflow-hidden rounded-lg bg-white shadow transition-all hover:shadow-md">
+                                <button onclick="toggleCategory(this)" class="w-full px-6 py-4 text-left hover:bg-gray-50">
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center">
+                                            <h3 class="text-sm font-semibold text-gray-900">${category}</h3>
+                                            <span class="ml-2 text-sm text-gray-500">(${data.transactions.length})</span>
+                                            ${budgetBadge}
+                                        </div>
+                                        <div class="flex items-center gap-3">
+                                            <span class="text-lg font-bold ${isPositive ? 'text-green-600' : 'text-red-600'}">
+                                                ${isPositive ? '+' : ''}${formatCurrency(data.total)}
+                                            </span>
+                                            <svg class="h-5 w-5 text-gray-400 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </button>
+                                <div class="hidden bg-gray-50 px-6 py-4">
+                                    <div class="space-y-3">
+                                        ${data.transactions.map(t => `
+                                            <div class="flex items-center justify-between border-b border-gray-200 pb-3 last:border-0 last:pb-0">
+                                                <div class="flex items-center gap-4">
+                                                    <span class="text-xs font-semibold text-gray-500">${formatDate(t.date)}</span>
+                                                    <div>
+                                                        <p class="text-sm font-medium text-gray-900">${t.name || 'N/A'}</p>
+                                                        <p class="text-xs text-gray-500">${t.description}</p>
+                                                    </div>
+                                                </div>
+                                                <span class="text-sm font-bold ${t.amount < 0 ? 'text-red-600' : 'text-green-600'}">
+                                                    ${t.amount > 0 ? '+' : ''}${formatCurrency(t.amount)}
+                                                </span>
+                                            </div>
+                                        `).join('')}
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    }).join('')}
+                </div>
+            `;
+
+            document.getElementById('content').innerHTML = statsHTML + narrativeHTML + chartsHTML + categoriesHTML;
+
+            // Render charts
+            const colors = ['#ef4444', '#f97316', '#f59e0b', '#eab308', '#84cc16', '#22c55e', '#10b981', '#14b8a6', '#06b6d4', '#0ea5e9', '#3b82f6', '#6366f1', '#8b5cf6', '#a855f7', '#d946ef'];
+            const expenseLabels = expenseCategories.map(([cat]) => cat);
+            const expenseValues = expenseCategories.map(([cat, data]) => Math.abs(data.total));
+            
+            charts.expenses = new Chart(document.getElementById('expensesChart'), {
+                type: 'bar',
+                data: {
+                    labels: expenseLabels,
+                    datasets: [{
+                        data: expenseValues,
+                        backgroundColor: colors,
+                        borderRadius: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: { y: { beginAtZero: true } }
+                }
+            });
+            
+            charts.pie = new Chart(document.getElementById('pieChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: expenseLabels,
+                    datasets: [{ data: expenseValues, backgroundColor: colors, borderWidth: 0 }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { position: 'right' } }
+                }
+            });
+
+            const budgetLabels = [];
+            const budgetedValues = [];
+            const actualValues = [];
+            
+            expenseCategories.forEach(([cat, data]) => {
+                if (budget.monthly_budget[cat]) {
+                    budgetLabels.push(cat);
+                    budgetedValues.push(budget.monthly_budget[cat]);
+                    actualValues.push(Math.abs(data.total));
+                }
+            });
+            
+            charts.budget = new Chart(document.getElementById('budgetChart'), {
+                type: 'bar',
+                data: {
+                    labels: budgetLabels,
+                    datasets: [
+                        { label: 'Orçado', data: budgetedValues, backgroundColor: '#94a3b8', borderRadius: 8 },
+                        { label: 'Real', data: actualValues, backgroundColor: actualValues.map((val, i) => val > budgetedValues[i] ? '#ef4444' : '#10b981'), borderRadius: 8 }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: true } },
+                    scales: { y: { beginAtZero: true } }
+                }
+            });
+        }
+
+        function toggleCategory(button) {
+            const details = button.nextElementSibling;
+            const icon = button.querySelector('svg');
+            details.classList.toggle('hidden');
+            icon.classList.toggle('rotate-180');
+        }
+
+        function loadMonth(monthKey) {
+            currentMonth = monthKey;
+            document.querySelectorAll('.month-btn').forEach(btn => {
+                btn.classList.toggle('bg-emerald-600', btn.dataset.month === monthKey);
+                btn.classList.toggle('text-white', btn.dataset.month === monthKey);
+                btn.classList.toggle('text-gray-700', btn.dataset.month !== monthKey);
+                btn.classList.toggle('ring-gray-300', btn.dataset.month !== monthKey);
+                btn.classList.toggle('ring-0', btn.dataset.month === monthKey);
+            });
+            renderData(months[monthKey].data, months[monthKey].label);
+        }
+
+        // Inicializar botões
+        const monthButtonsContainer = document.getElementById('monthButtons');
+        Object.entries(months).forEach(([key, data]) => {
+            const btn = document.createElement('button');
+            btn.className = 'month-btn inline-flex items-center rounded-md px-3 py-2 text-sm font-semibold shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 transition-colors';
+            btn.textContent = data.label;
+            btn.dataset.month = key;
+            btn.onclick = () => loadMonth(key);
+            monthButtonsContainer.appendChild(btn);
+        });
+
+        // Carregar mês mais recente
+        const latestMonth = Object.keys(months).sort().reverse()[0];
+        loadMonth(latestMonth);
+    </script>
+</body>
+</html>
