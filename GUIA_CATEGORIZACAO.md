@@ -35,6 +35,9 @@ Este documento serve como referência para categorizar as despesas mensais do ex
 - Albert Heijn (todas as lojas)
 - Jumbo (todas as lojas)
 - Dirk van den Broek
+- BCK*AH (Albert Heijn to go - estações e lojas de conveniência)
+- BCK*AH to go (todas as variações)
+- BCK*AH Station (todas as variações)
 
 ---
 

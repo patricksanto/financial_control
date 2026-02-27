@@ -540,6 +540,48 @@
       "name": "PLUS Beestenmarkt",
       "description": "PLUS Beestenmarkt DEVENTER, NL",
       "counterparty": ""
+    },
+    {
+      "date": "2026-02-07",
+      "amount": -2.75,
+      "name": "BCK*AH to go 5801",
+      "description": "BCK*AH to go 5801 S-HERTOGENBOS, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-07",
+      "amount": -1.9,
+      "name": "BCK*AH Station Den Bos",
+      "description": "BCK*AH Station Den Bos S-HERTOGENBOS, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-07",
+      "amount": -2.3,
+      "name": "BCK*AH to go 5801",
+      "description": "BCK*AH to go 5801 S-HERTOGENBOS, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-20",
+      "amount": -2.3,
+      "name": "BCK*AH to go 5873 Utre",
+      "description": "BCK*AH to go 5873 Utre UTRECHT, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-22",
+      "amount": -1.3,
+      "name": "BCK*AH to go 5801",
+      "description": "BCK*AH to go 5801 S-HERTOGENBOS, NL",
+      "counterparty": ""
+    },
+    {
+      "date": "2026-02-22",
+      "amount": -2.3,
+      "name": "BCK*AH to go 5801",
+      "description": "BCK*AH to go 5801 S-HERTOGENBOS, NL",
+      "counterparty": ""
     }
   ],
   "Taxas Bancárias": [
@@ -1216,55 +1258,6 @@
       "amount": -39.0,
       "name": "XP*T BOOKEO24.COM",
       "description": "XP*T BOOKEO24.COM DUBLIN, IE",
-      "counterparty": ""
-    },
-    {
-      "date": "2026-02-07",
-      "amount": -2.75,
-      "name": "BCK*AH to go 5801",
-      "description": "BCK*AH to go 5801 S-HERTOGENBOS, NL",
-      "counterparty": ""
-    },
-    {
-      "date": "2026-02-07",
-      "amount": -1.9,
-      "name": "BCK*AH Station Den Bos",
-      "description": "BCK*AH Station Den Bos S-HERTOGENBOS, NL",
-      "counterparty": ""
-    },
-    {
-      "date": "2026-02-07",
-      "amount": -2.3,
-      "name": "BCK*AH to go 5801",
-      "description": "BCK*AH to go 5801 S-HERTOGENBOS, NL",
-      "counterparty": ""
-    },
-    {
-      "date": "2026-02-20",
-      "amount": -3.05,
-      "name": "BCK*0707 DV Huiskamer",
-      "description": "BCK*0707 DV Huiskamer DEVENTER, NL",
-      "counterparty": ""
-    },
-    {
-      "date": "2026-02-20",
-      "amount": -2.3,
-      "name": "BCK*AH to go 5873 Utre",
-      "description": "BCK*AH to go 5873 Utre UTRECHT, NL",
-      "counterparty": ""
-    },
-    {
-      "date": "2026-02-22",
-      "amount": -1.3,
-      "name": "BCK*AH to go 5801",
-      "description": "BCK*AH to go 5801 S-HERTOGENBOS, NL",
-      "counterparty": ""
-    },
-    {
-      "date": "2026-02-22",
-      "amount": -2.3,
-      "name": "BCK*AH to go 5801",
-      "description": "BCK*AH to go 5801 S-HERTOGENBOS, NL",
       "counterparty": ""
     }
   ],

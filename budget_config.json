@@ -1,0 +1,25 @@
+{
+  "monthly_budget": {
+    "Moradia": 1641.49,
+    "Planos de Saúde": 331.30,
+    "Supermercado": 600.00,
+    "Transporte": 100.00,
+    "Educação": 595.00,
+    "Empresa Gustavo Otero": 140.00,
+    "Assinaturas & Serviços Digitais": 89.00,
+    "Restaurantes & Delivery": 180.00,
+    "Coffeeshop": 80.00,
+    "Farmácia & Saúde": 50.00,
+    "Academia": 77.00,
+    "Compras & Varejo": 150.00,
+    "Lazer & Entretenimento": 60.00,
+    "Taxas Bancárias": 22.00
+  },
+  "notes": {
+    "Moradia": "Aluguel (1310) + Internet (54.23) + Celulares (126.26) + Água (21) + Luz/Gás (190)",
+    "Planos de Saúde": "Seguro mensal (178.30) + HollandZorg (153). Valores acima são excesso do plano.",
+    "Transporte": "Duas assinaturas de transporte público (~100/mês)",
+    "Educação": "Mensalidade fixa"
+  },
+  "total_monthly_budget": 4115.79
+}
