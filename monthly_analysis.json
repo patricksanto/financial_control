@@ -1,0 +1,62 @@
+{
+  "2026-02": {
+    "total_budget": 4115.79,
+    "total_spent": 4416.17,
+    "difference": 300.38,
+    "percent_over": 7.3,
+    "top_overages": [
+      {
+        "category": "Planos de Saúde",
+        "budgeted": 331.3,
+        "actual": 563.3,
+        "difference": 232.0,
+        "percent": 70.0
+      },
+      {
+        "category": "Transporte",
+        "budgeted": 100.0,
+        "actual": 287.0,
+        "difference": 187.0,
+        "percent": 187.0
+      },
+      {
+        "category": "Educação",
+        "budgeted": 595.0,
+        "actual": 629.15,
+        "difference": 34.15,
+        "percent": 5.7
+      }
+    ],
+    "narrative": "🚨 <strong>Opa!</strong> O orçamento estourou em <strong>€300,38</strong> este mês. Vamos ver quem foram os vilões:|🔥 <strong>Planos de Saúde</strong> foi o grande campeão: era pra ser €331, mas foram €563 (+€232, ou +70%!). ⚠️ <strong>Transporte</strong> também pesou: €100 planejados viraram €287 (+€187, quase 3x o esperado!).|💡 Esses dois sozinhos já explicam €419 do estouro. <strong>Educação</strong> (+€34) e <strong>Supermercado</strong> (+€11) também saíram um pouco da curva, mas nada grave. 🎯 Foco para março: controlar saúde e transporte!"
+  },
+  "2026-01": {
+    "total_budget": 4115.79,
+    "total_spent": 6056.64,
+    "difference": 1940.85,
+    "percent_over": 47.2,
+    "top_overages": [
+      {
+        "category": "Transporte",
+        "budgeted": 100.0,
+        "actual": 384.0,
+        "difference": 284.0,
+        "percent": 284.0
+      },
+      {
+        "category": "Compras & Varejo",
+        "budgeted": 150.0,
+        "actual": 430.32,
+        "difference": 280.32,
+        "percent": 186.88
+      },
+      {
+        "category": "Supermercado",
+        "budgeted": 600.0,
+        "actual": 756.37,
+        "difference": 156.37,
+        "percent": 26.061666666666667
+      }
+    ],
+    "narrative": "🚨 <strong>Eita!</strong> Janeiro começou o ano com tudo... e estourou <strong>€1.940,85</strong> do orçamento (quase 50% a mais!). Vamos aos culpados:|🔥 <strong>Transporte</strong> foi o campeão absoluto: €100 planejados viraram €384 (+€284, ou seja, quase 4x!). 🛍️ <strong>Compras & Varejo</strong> também não ajudou: €150 viraram €430 (+€280). 🛒 E o <strong>Supermercado</strong> passou de €600 para €756 (+€156).|💡 Esses três sozinhos explicam €720 do estouro. Janeiro é sempre complicado com volta das férias, mas esses números precisam de atenção! 🎯 Foco: controlar transporte e compras no próximo mês."
+  }
+}
